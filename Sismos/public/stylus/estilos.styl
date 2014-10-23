@@ -1,0 +1,155 @@
+@import "normalize.styl"
+@import "icon.styl"
+
+gris-claro = #eee
+gris-oscuro = #bbb
+verde = #6cac4b
+azul = #0084B4
+celeste = #8ec1da
+
+body
+html
+	font-size 16px
+	margin 0
+	padding 0
+	background gris-claro
+header
+	background white
+	position fixed
+	margin-bottom 1em
+	top 0
+	left 0
+	right 0
+section
+	padding 1em
+	width 52em
+	margin 3em auto
+ul
+	margin 0
+	padding 0
+li
+	list-style none
+a
+	text-decoration none
+	color black
+h1 
+h2
+h3
+	font-weight lighter
+textarea
+	resize none
+// OCSS
+.content
+	background white
+	padding 1em
+.right
+	float right
+.left
+	float left
+.icon
+	font-size 1.5em	
+	display inline-block
+	margin-right 0.3em
+	transition all 0.5s
+.w100
+	width 90% !important
+.w50
+	width 40% !important
+.w25
+	width 25% !important
+.text-center
+	text-align center
+.margin-bottom
+	margin-bottom 1em
+// CSS
+.menu
+	margin 0 auto
+	width 52em
+	position relative
+	.item
+		padding 0.5em
+		display inline-block
+		font-size 0.9em
+		border-bottom 3px solid transparent
+		transition .5s all
+		&:hover
+			border-bottom 3px solid verde
+			.icon
+				transform: scale(1.3,1.3)
+		&.logo
+			border-bottom 0
+			position absolute
+			right 0
+			top 0
+// banner-left
+.banner-left
+	width 9em
+	float left
+.banner-left-box
+	font-size 3em
+.banner-left-content
+	padding 1em
+	background white
+	border-radius 0 0 5px 5px
+	.list-item
+		line-height 1.5em
+		vertical-align top
+		cursor pointer
+		transition .5s all
+		border-right 3px solid transparent
+		&:hover
+			border-right 3px solid verde
+			.icon
+				transform: scale(1.3,1.3)
+.banner-left-section
+	border-radius 5px
+	margin-bottom 1em
+	span
+	input
+		margin 3px 0
+.banner-left-option
+	font-size 0.8em
+.box
+	background verde
+	color white
+	border-radius 5px 5px 0 0
+	text-align center
+	h1
+		margin 0
+		padding 0.5em 0
+// banner-right
+.banner-right
+	width 40em
+	float right
+	border-radius 5px
+.category
+	margin-bottom 1em
+.category-title
+	margin 0
+	text-align center
+	background gris-oscuro
+	border 1px solid #aaa
+	padding 0.2em
+	border-radius 5px 5px 0 0
+	cursor pointer	
+.category-content
+	background white
+	padding 1em
+// table
+.table-cell
+	tr
+		border 1px solid gris-oscuro
+		&:nth-child(even)
+			background #c0dcc0
+.table
+	width 100%
+	margin 0 auto
+	font-size 0.8em
+	margin-bottom 1em
+	border-radius 5px
+	.title
+		text-align center
+		background gris-claro
+		border-bottom 1px solid gris-claro
+	td
+		padding 0.3rem

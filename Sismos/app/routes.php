@@ -10,8 +10,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('/',['as'=>'home','uses'=>'ShowController@showHome']);
+Route::get('register',['as'=>'register','uses'=>'ShowController@showRegister']);
+Route::get('consult',['as'=>'consult','uses'=>'ShowController@showConsult']);
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
