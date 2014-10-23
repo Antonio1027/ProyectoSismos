@@ -1,5 +1,7 @@
 <?php
 
+use Sismos\Entities\User;
+
 class DatabaseSeeder extends Seeder {
 
 	/**
@@ -11,7 +13,9 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		// $this->call('UserTableSeeder');
+		$this->call('UsersTableSeeder');
+		$this->call('DirectoresTableSeeder');
+		$this->call('EncuestadoresTableSeeder');
 	}
 
 }
