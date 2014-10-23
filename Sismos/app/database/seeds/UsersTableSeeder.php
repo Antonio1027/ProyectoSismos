@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder {
 		foreach(range(1, 10) as $index)
 		{
 			User::create([
-				'full_name'=> $faker->userName
+				'full_name'=> $faker->name
 			]);
 		}
 	}

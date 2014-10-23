@@ -13,7 +13,7 @@ class EncuestadoresTableSeeder extends Seeder {
 		foreach(range(1, 10) as $index)
 		{
 			Encuestador::create([
-				'full_name'=>$faker->userName
+				'full_name'=>$faker->name
 			]);
 		}
 	}
