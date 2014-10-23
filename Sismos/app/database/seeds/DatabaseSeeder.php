@@ -1,7 +1,5 @@
 <?php
 
-use Sismos\Entities\User;
-
 class DatabaseSeeder extends Seeder {
 
 	/**
