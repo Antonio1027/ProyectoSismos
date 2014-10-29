@@ -4,8 +4,15 @@
 gris-claro = #eee
 gris-oscuro = #bbb
 verde = #6cac4b
-azul = #0084B4
 celeste = #8ec1da
+rojo-claro = #ed1c24
+rojo-oscuro = #b22227
+amarillo-claro = #ffcf06
+amarillo-oscuro = #f89b1c
+verde-claro = #00a651
+verde-oscuro = #00652e
+azul-claro = #43ace1
+azul-oscuro = #005e9a
 
 body
 html
@@ -38,10 +45,21 @@ h3
 	font-weight lighter
 textarea
 	resize none
+input
+select
+textarea
+	border 1px solid gris-oscuro
+	transition all 0.3s
+	&:focus
+		border 1px solid rgba(82,168,236,0.8)
+		outline 0
+		box-shadow inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(82,168,236,0.6)
 // OCSS
 .content
 	background white
 	padding 1em
+.pointer
+	cursor pointer
 .right
 	float right
 .left
@@ -57,10 +75,75 @@ textarea
 	width 40% !important
 .w25
 	width 25% !important
+.w15
+	width 15% !important
+.w10
+	width 10% !important
+.inline-block
+	display inline-block
 .text-center
 	text-align center
+.block-center
+	margin 0 auto
 .margin-bottom
 	margin-bottom 1em
+.btn
+	display inline-block
+	border-radius 3px
+	padding 0.5em 1em
+	background gris-claro
+	border 0
+	text-decoration none
+	&:hover
+		background gris-oscuro
+.btn-red
+	color white
+	background rojo-claro
+	&:hover
+		background rojo-oscuro
+.btn-yellow
+	background amarillo-claro
+	&:hover
+		background amarillo-oscuro
+.btn-blue
+	color white
+	background azul-oscuro
+	&:hover
+		background azul-claro
+.btn-green
+	color white
+	background verde-claro
+	&:hover
+		background verde-oscuro
+input
+select
+textarea
+.category
+	&.ng-invalid
+	&.invalid
+		border-radius 5px
+		border 1px solid rgba(255, 0, 0, 0.8)
+		outline 0
+		box-shadow inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(219, 14, 61, 0.6)
+// ngAnimate
+.blur
+	transition ease-in-out 0.8s
+	&.ng-hide-add
+		opacity 1
+	&.ng-hide-add-active
+		opacity 0
+	&.ng-hide-remove
+		opacity 0
+	&.ng-hide-remove-active
+		opacity 1
+	&.ng-enter
+		opacity 0
+	&.ng-enter-active
+		opacity 1
+	&.ng-leave
+		opacity 1
+	&.ng-leave-active
+		opacity 0
 // CSS
 .menu
 	margin 0 auto
@@ -135,6 +218,15 @@ textarea
 .category-content
 	background white
 	padding 1em
+.consultrecords
+	text-align center
+	margin-bottom 1em
+.fieldrecords
+	&:nth-child(even)
+		// background gris-claro
+	text-align center
+	border-bottom 1px dashed gris-oscuro
+	padding 1em 0
 // table
 .table-cell
 	tr
@@ -153,3 +245,11 @@ textarea
 		border-bottom 1px solid gris-claro
 	td
 		padding 0.3rem
+//Maps
+.map
+	width 30em
+	height 30em
+	padding 0.5em
+	background gris-claro
+	margin-bottom 1em
+

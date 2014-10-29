@@ -7,7 +7,10 @@ class ShowController extends BaseController {
 	public function showRegister(){
 		return View::make('register');
 	}	
-	public function showConsult(){
-		return View::make('Consult');
+	public function showAnalytics(){
+		return View::make('analytics');
+	}
+	public function showConsultRecords(){
+		return View::make('consultrecords');
 	}
 }

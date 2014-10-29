@@ -5,9 +5,9 @@
 	<title> @yield('title') </title>
 	<link rel="stylesheet" href="{{asset('css/estilos.css')}}">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script src="https://code.angularjs.org/1.2.26/angular-animate.js"></script>
 	<script src="{{asset('js/app.js')}}"></script>
 	@yield('stylesheet')
-	@yield('script')
 </head>
 <body>
 	<header>
@@ -19,13 +19,14 @@
 				<a href="{{route('register')}}"><span class="icon icon-home"></span>Capturas de registros</a>
 			</li>
 			<li class="item">
-				<a href="{{route('consult')}}"><span class="icon icon-calculator"></span>Calculo de vulnarabilidad metodo de la UAM</a>
+				<a href="{{route('analytics')}}"><span class="icon icon-calculator"></span>Calculo de vulnarabilidad metodo de la UAM</a>
 			</li>
 			<li class="item logo"><img src="{{asset('images/logo.png')}}" alt="" width="25"></li>
 		</ul>
 	</header>
 	
 	@yield('content')
-
+	
+	@yield('script')
 </body>
 </html>

@@ -11,6 +11,11 @@
 |
 */
 Route::get('/',['as'=>'home','uses'=>'ShowController@showHome']);
+
 Route::get('register',['as'=>'register','uses'=>'ShowController@showRegister']);
-Route::get('consult',['as'=>'consult','uses'=>'ShowController@showConsult']);
+Route::post('register',['as'=>'register','uses'=>'CreateController@createRegister']);
+
+Route::get('consultrecords',['as'=>'consultrecords','uses'=>'ShowController@showConsultRecords']);
+
+Route::get('analytics',['as'=>'analytics','uses'=>'ShowController@showAnalytics']);
 

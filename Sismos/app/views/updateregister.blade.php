@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-	Registro
+	Modificar registro
 @stop
 @section('script')
 	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBpCHGsuh7cVRGRyn-ECXWybh7hq2lP_hc&sensor=true"></script>
@@ -15,7 +15,7 @@
 				</div>
 				<div class="banner-left-content">
 					<ul class="list">
-						<li class="list-item"><a href="{{route('register')}}"><span class="icon icon-add"></span> Nuevo</a></li>
+						<li class="list-item"><a href="{{route('newregister')}}"><span class="icon icon-add"></span> Nuevo</a></li>
 						{{--<li class="list-item"><span class="icon icon-minus"></span> Borrar</li>--}}
 						{{--<li class="list-item"><span class="icon icon-pen"></span> Modificar</li>--}}
 						<li class="list-item"><a href="{{route('consultrecords')}}"><span class="icon icon-magnifier"></span> Buscar</a></li>
@@ -41,48 +41,42 @@
 				</div>
 		</article>
 
-		<article class="banner-right">
-			{{ Form::open(['route' => 'register', 'method' => 'post', 'name' => 'formRegister']) }}
-
-			<div class="category" ng-init="tab1 = true" ng-class="{invalid: 
-								!formRegister.formato.$valid || 
-								!formRegister.director_id.$valid || 
-								!formRegister.fecha_elaboracion.$valid || 
-								!formRegister.encuestador_id.$valid || 
-								!formRegister.ciudad_id.$valid}">								
+		{{ Form::open(['route' => 'register', 'method' => 'post', 'name' => 'formF1', 'novalidate']) }}
+		<article class="banner-right" ng-init="tab1 = true">
+			<div class="category" >
 				<h3 class="category-title" ng-click="tab1 = !tab1">Datos del registro</h3>
 				<div class="category-content blur" ng-show="tab1">
 					<table class="table">
 						<tr>
 							<td>Formato</td>
 							<td>
-								{{Form::text('formato',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('formato',null,['class'=>'w100'])}}
 							</td>
 							<td>
 								Director de proyecto
 								<span class="icon icon-popout pointer" ng-click="director = !director"></span>
 							</td>
 							<td>
-								{{Form::select('director_id',['s'],null,['class'=>'w100','ng-model'=>'director_id','required'])}}
+								{{Form::select('director_id',[],null,['class'=>'w100'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Fecha de elaboracion</td>
 							<td>
-								{{Form::input('date','fecha_elaboracion',null,['class'=>'w100','ng-model'=>'fecha_elaboracion','required'])}}
+								{{Form::input('date','fecha_elaboracion',null,['class'=>'w100'])}}
 							</td>
 							<td>
 								Elaboro
 								<span class="icon icon-popout pointer" ng-click="elaboro = !elaboro"></span>
 							</td>
 							<td>
-								{{Form::select('encuestador_id',['s'],null,['class'=>'w100','ng-model'=>'encuestador_id','required'])}}
+								{{Form::select('encuestador_id',[],null,['class'=>'w100'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Ciudad</td>
 							<td>
-								{{Form::text('ciudad_id',null,['class'=>'w100','ng-model'=>'ciudad_id','required'])}}
+								{{Form::text('ciudad_id',null,['class'=>'w100'])}}
 							</td>
 							<td></td>
 							<td></td>
@@ -90,54 +84,53 @@
 					</table>
 				</div>
 			</div>
-
-			<div class="category" ng-init="tab2 = true" ng-class="{invalid: validtab2}">
+			<div class="category">
 				<h3 class="category-title" ng-click="tab2 = !tab2">Datos generales de la construcción</h3>
 				<div class="category-content blur" ng-show="tab2">
 					<table class="table">
 						<tr>
 							<td>Domicilio</td>
 							<td colspan="3">
-								{{Form::textarea('domicilio',null,['cols'=>"50",'rows'=>"3",'class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::textarea('domicilio',null,['cols'=>"50",'rows'=>"3",'class'=>'w100'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Número de habitantes</td>
 							<td>
-								{{Form::text('habitantes',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('habitantes',null,['class'=>'w100'])}}
 							</td>
 							<td>Código postal</td>
 							<td>
-								{{Form::text('codigo_postal',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('codigo_postal',null,['class'=>'w100'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Tipo de muebles</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w100'])}}
 							</td>
 							<td>Tipo de acabados</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w100'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Zona de hubicaión</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w100'])}}
 							</td>
 							<td>
 								Datos G.P.S.
 								<span class="icon icon-home pointer" ng-click="map = !map"></span>
 							</td>
 							<td>
-								{{Form::text('',null,['class'=>'w100','ng-model'=>'coordinates','required'])}}
+								{{Form::text('',null,['class'=>'w100','ng-model'=>'coordinates'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Posición en la manzana</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w100'])}}
 							</td>
 						</tr>
 					</table>
@@ -151,11 +144,11 @@
 						<tr>
 							<td>Izquierda</td>
 							<td>
-								{{Form::text('',null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w50'])}}
 							</td>
 							<td>Derecha</td>
 							<td>
-								{{Form::text('',null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w50'])}}
 							</td>
 						</tr>
 					</table>
@@ -166,37 +159,37 @@
 						<tr>
 							<td width="150">Izquierda</td>
 							<td>
-								{{Form::text('',null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w50'])}}
 							</td>
 							<td width="130">Derecha</td>
 							<td>
-								{{Form::text('',null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w50'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Edad aproximada de la construción en años</td>
 							<td>
-								{{Form::text('',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w100'])}}
 							</td>
 							<td>Números de niveles sobre el terreno</td>
 							<td>
-								{{Form::text('',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w100'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Altura promedio de entrepisos en metros (m)</td>
 							<td>
-								{{Form::text('',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w100'])}}
 							</td>
 							<td>Uso principal</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w100'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Tipo de contrución</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w100'])}}
 								<span class="error"></span>
 							</td>
 						</tr>
@@ -209,8 +202,7 @@
 					</table>
 				</div>
 			</div>
-
-			<div class="category" ng-init="tab3 = true" ng-class="{invalid: validtab3}">
+			<div class="category">
 				<h3 class="category-title" ng-click="tab3 = !tab3">Características de la construcción</h3>
 				<div class="category-content blur" ng-show="tab3">
 					<table class="table">
@@ -220,7 +212,7 @@
 						<tr>
 							<td>Espesor de muros en centímetros (cm)</td>
 							<td>
-								{{Form::text('',null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w50'])}}
 							</td>
 						</tr>
 						<tr>
@@ -230,7 +222,7 @@
 									'Si'=>'Si',
 									'No'=>'No',
 									'No se sabe'=>'No se sabe'
-								],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								],null,['class'=>'w50'])}}
 								<span class="error"></span>
 							</td>
 						</tr>
@@ -241,19 +233,19 @@
 									'Si'=>'Si',
 									'No'=>'No',
 									'No se sabe'=>'No se sabe'
-								],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								],null,['class'=>'w50'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Material de los muros</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w50'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Densidad de los muros</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w50'])}}
 							</td>
 						</tr>
 					</table>
@@ -264,13 +256,13 @@
 						<tr>
 							<td>Tipo de suelo</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w50'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Tipo de cimentación</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w50'])}}
 							</td>
 						</tr>
 					</table>
@@ -285,24 +277,24 @@
 						<tr>
 							<td width="25%">Espesor de losa de techo en centimetros (cm)</td>
 							<td width="25%">
-								{{Form::text('',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w100'])}}
 							</td>
 							<td width="25%">Tipo de suelo</td>
 							<td width="25%">
-								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w100'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Tipo de piso</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w100'])}}
 							</td>
 							<td>Pendiente (inclinacion)</td>
 							<td>
 								{{Form::select('',[
 									'<5%'=>'<5%',
 									'<3%'=>'<3%'
-								],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								],null,['class'=>'w100'])}}
 							</td>
 						</tr>
 					</table>
@@ -317,40 +309,39 @@
 						<tr>
 							<td width="25%">Largo</td>
 							<td width="25%">
-								{{Form::text('',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w100'])}}
 							</td>
 							<td width="25%">Regularidad en plata</td>
 							<td width="25%">
-								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w100'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Ancho</td>
 							<td>
-								{{Form::text('',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w100'])}}
 							</td>
 							<td>Regularidad vertical</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w100'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Alto</td>
 							<td>
-								{{Form::text('',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w100'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Área aproximada construida (m2)</td>
 							<td>
-								{{Form::text('',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w100'])}}
 							</td>
 						</tr>
 					</table>
 				</div>
 			</div>
-
-			<div class="category" ng-init="tab4 = true" ng-class="{invalid: validtab4}">
+			<div class="category">
 				<h3 class="category-title" ng-click="tab4 = !tab4">Antecedentes históricos de la construcción</h3>
 				<div class="category-content blur" ng-show="tab4">
 					<table class="table">
@@ -361,11 +352,11 @@
 									'Si'=>'Si',
 									'No'=>'No',
 									'No se sabe'=>'No se sabe'
-								],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								],null,['class'=>'w50'])}}
 							</td>
 							<td>Descripción</td>
 							<td>
-								{{Form::textarea('',null,['cols'=>"30",'rows'=>"3",'class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::textarea('',null,['cols'=>"30",'rows'=>"3",'class'=>'w100'])}}
 							</td>
 						</tr>
 						<tr>
@@ -375,23 +366,23 @@
 									'Si'=>'Si',
 									'No'=>'No',
 									'No se sabe'=>'No se sabe'
-								],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								],null,['class'=>'w50'])}}
 							</td>
 							<td>Descripción del daño</td>
 							<td>
-								{{Form::textarea('',null,['cols'=>"30",'rows'=>"3",'class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::textarea('',null,['cols'=>"30",'rows'=>"3",'class'=>'w100'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Mantenimiento</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w50'])}}
 							</td>
 							<td>
 								Tipo de fenomeno
 							</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w50'])}}
 							</td>
 						</tr>
 						<tr>
@@ -401,7 +392,7 @@
 									'Si'=>'Si',
 									'No'=>'No',
 									'No se sabe'=>'No se sabe'
-								],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								],null,['class'=>'w50'])}}
 							</td>
 							<td>¿Remodelaciones?</td>
 							<td>
@@ -409,18 +400,16 @@
 									'Si'=>'Si',
 									'No'=>'No',
 									'No se sabe'=>'No se sabe'
-								],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								],null,['class'=>'w50'])}}
 							</td>
 						</tr>
 					</table>
 				</div>
 			</div>
-
-			<div class="text-center margin-bottom blur" ng-if='formRegister.$valid'>
+			<div class="text-center">
 				<button type="submit" class="btn btn-blue"> Agregar nuevo registro</button>
 			</div>
-
-			{{Form::close()}}
 		</article>
+		{{Form::close()}}
 	</section>
 @stop
