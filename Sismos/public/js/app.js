@@ -35,6 +35,19 @@ App.controller('ConsultRegisterCtrl', function($scope){
 
 });
 
+App.controller('ManagerUsersCtrl', function ($scope, $http) {
+	$scope.search = function(){
+		$http.get('searchusers',{
+	      params:{
+	        username: $scope.username,
+	        type: $scope.type
+	      }
+	    }).success(function($data){
+	      $scope.users = $data;
+	    })
+	};
+});
+
 //JavaScript
 function confirmar(e,text){
     if( !confirm(text) )

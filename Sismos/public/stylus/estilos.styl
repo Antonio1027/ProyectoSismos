@@ -55,6 +55,9 @@ textarea
 		outline 0
 		box-shadow inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(82,168,236,0.6)
 // OCSS
+.error
+	color red
+	font-style italic
 .content
 	background white
 	padding 1em
@@ -81,10 +84,14 @@ textarea
 	width 10% !important
 .inline-block
 	display inline-block
+.block
+	display block
 .text-center
 	text-align center
 .block-center
 	margin 0 auto
+.padding
+	padding 0.3em
 .margin-bottom
 	margin-bottom 1em
 .btn
@@ -145,6 +152,9 @@ textarea
 	&.ng-leave-active
 		opacity 0
 // CSS
+.login
+.home
+	margin 7% auto
 .menu
 	margin 0 auto
 	width 52em
@@ -252,4 +262,9 @@ textarea
 	padding 0.5em
 	background gris-claro
 	margin-bottom 1em
-
+.user-item
+	text-align center
+	&:nth-child(even)
+		background #c0dcc0
+	td
+		padding 0.3em 0

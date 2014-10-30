@@ -15,12 +15,30 @@
 			<li class="item">
 				<a href="{{route('home')}}"><span class="icon icon-home"></span>Inicio</a>
 			</li>
-			<li class="item">
-				<a href="{{route('register')}}"><span class="icon icon-home"></span>Capturas de registros</a>
-			</li>
-			<li class="item">
-				<a href="{{route('analytics')}}"><span class="icon icon-calculator"></span>Calculo de vulnarabilidad metodo de la UAM</a>
-			</li>
+			
+			@if( is_basico() )
+				<li class="item">
+					<a href="{{route('register')}}"><span class="icon icon-home"></span>Capturas de registros</a>
+				</li>
+			@endif
+			@if( is_experto() )
+				<li class="item">
+					<a href="{{route('analytics')}}"><span class="icon icon-calculator"></span>Calculo de vulnarabilidad</a>
+				</li>
+			@endif
+			
+			@if( is_admin() )
+				<li class="item">
+					<a href="{{route('managerusers')}}"><span class="icon icon-calculator"></span>Administrar usuarios</a>
+				</li>
+			@endif
+			@if( Auth::check() )
+				<li class="item">
+					<a href="{{route('logout')}}"><span class="icon icon-calculator"></span>Cerrar sesion</a>
+				</li>
+			@endif
+
+
 			<li class="item logo"><img src="{{asset('images/logo.png')}}" alt="" width="25"></li>
 		</ul>
 	</header>

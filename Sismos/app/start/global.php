@@ -79,3 +79,23 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+// ['Administrador','Usuario experto','Usuario basico']
+if( ! function_exists('is_admin')){
+	function is_admin()
+	{
+	    return Auth::check() && (Auth::user()->type == 'Administrador');
+	}	
+}
+if( ! function_exists('is_experto')){
+	function is_experto()
+	{
+	    return Auth::check() && (Auth::user()->type == 'Usuario experto' || Auth::user()->type == 'Administrador');
+	}	
+}
+if( ! function_exists('is_basico')){
+	function is_basico()
+	{
+	    return Auth::check() && (Auth::user()->type == 'Usuario basico' || Auth::user()->type == 'Usuario experto' || Auth::user()->type == 'Administrador');
+	}	
+}

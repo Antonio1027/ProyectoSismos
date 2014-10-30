@@ -114,7 +114,7 @@
 						<tr>
 							<td>Tipo de muebles</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('inmueble',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
 							</td>
 							<td>Tipo de acabados</td>
 							<td>

@@ -70,6 +70,18 @@ Route::filter('guest', function()
 	if (Auth::check()) return Redirect::to('/');
 });
 
+Route::filter('is_admin', function()
+{
+	if (! is_admin()) return Redirect::to('/');
+});
+Route::filter('is_experto', function()
+{
+	if (! is_experto()) return Redirect::to('/');
+});
+Route::filter('is_basico', function()
+{
+	if (! is_basico()) return Redirect::to('/');
+});
 /*
 |--------------------------------------------------------------------------
 | CSRF Protection Filter
