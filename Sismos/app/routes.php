@@ -35,15 +35,21 @@ Route::group(['before'=>'auth'], function(){
 		Route::get('managerusers',['as'=>'managerusers','uses'=>'ShowController@showManagerUsers']);
 
 		Route::get('deleteuser/{id}',['as'=>'deleteuser','uses'=>'DeleteController@deleteUser']);
+		Route::get('deletedirector/{id}',['as'=>'deletedirector','uses'=>'DeleteController@deleteDirector']);
 		Route::get('createuser',['as'=>'createuser','uses'=>'ShowController@createUser']);
+		Route::get('createdirector',['as'=>'createdirector','uses'=>'ShowController@createDirector']);
 		Route::post('createuser',['as'=>'createuser','uses'=>'CreateController@createUser']);
+		Route::post('createdirector',['as'=>'createdirector','uses'=>'CreateController@createDirector']);
 		Route::get('updateuser/{id}',['as'=>'updateuser','uses'=>'ShowController@showUpdateUser']);
+		Route::get('updatedirector/{id}',['as'=>'updatedirector','uses'=>'ShowController@showUpdateDirector']);
 		Route::post('updateuser',['as'=>'updateuser','uses'=>'UpdateController@updateUser']);
+		Route::post('updatedirector',['as'=>'updatedirector','uses'=>'UpdateController@updateDirector']);
 	});
 
 	Route::get('/',['as'=>'home','uses'=>'ShowController@showHome']);
 	Route::get('logout', ['as'=>'logout', 'uses'=>'AuthController@logout']);
-	Route::get('searchusers', ['as'=>'searchusers', 'uses'=>'UtilsController@searchUsers']);
+	Route::get('searchusers', [ 'uses'=>'UtilsController@searchUsers']);
+	Route::get('searcdirectores', ['uses'=>'UtilsController@searchDirectores']);
 
 });
 

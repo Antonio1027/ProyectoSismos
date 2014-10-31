@@ -1,12 +1,14 @@
 <?php
 
 use Sismos\Repositories\UserRepo;
+use Sismos\Repositories\DirectoresRepo;
 class ShowController extends BaseController {
 
-	protected $userRepo;
+	protected $userRepo, $directoresRepo;
 
-	function __construct( UserRepo $userRepo){
+	function __construct( UserRepo $userRepo, DirectoresRepo $directoresRepo){
 		$this->userRepo = $userRepo;
+		$this->directoresRepo = $directoresRepo;
 	}
 	
 	public function showHome(){
@@ -18,13 +20,22 @@ class ShowController extends BaseController {
 	public function createUser(){
 		return View::make('createuser');
 	}
+	public function createDirector(){
+		return View::make('createdirector');
+	}
 	public function showManagerUsers(){
-		return View::make('managerusers');
+		$directores = [''=>'Director de proyecto'] + $this->directoresRepo->listDirectores();
+		return View::make('managerusers',compact('directores'));
 	}
 	public function showUpdateUser($id){
 		Session::put('iduser', $id);
 		$user = $this->userRepo->findUser($id);
 		return View::make('updateuser',compact('user'));
+	}
+	public function showUpdateDirector($id){
+		Session::put('iddirector', $id);
+		$director = $this->directoresRepo->findDirector($id);
+		return View::make('updatedirector',compact('director'));
 	}
 	public function showRegister(){
 		return View::make('register');

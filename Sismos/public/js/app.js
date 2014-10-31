@@ -46,6 +46,15 @@ App.controller('ManagerUsersCtrl', function ($scope, $http) {
 	      $scope.users = $data;
 	    })
 	};
+	$scope.searchdirectores = function(){
+		$http.get('searcdirectores',{
+	      params:{
+	        full_name: $scope.full_name
+	      }
+	    }).success(function($data){
+	      $scope.directores = $data;
+	    })
+	};
 });
 
 //JavaScript

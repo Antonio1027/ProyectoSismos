@@ -29,7 +29,7 @@
 			
 			@if( is_admin() )
 				<li class="item">
-					<a href="{{route('managerusers')}}"><span class="icon icon-calculator"></span>Administrar usuarios</a>
+					<a href="{{route('managerusers')}}"><span class="icon icon-calculator"></span>Administrar</a>
 				</li>
 			@endif
 			@if( Auth::check() )

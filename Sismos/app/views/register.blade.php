@@ -98,33 +98,33 @@
 						<tr>
 							<td>Domicilio</td>
 							<td colspan="3">
-								{{Form::textarea('domicilio',null,['cols'=>"50",'rows'=>"3",'class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::textarea('domicilio',null,['cols'=>"50",'rows'=>"3",'class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Número de habitantes</td>
 							<td>
-								{{Form::text('habitantes',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('habitantes',null,['class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 							<td>Código postal</td>
 							<td>
-								{{Form::text('codigo_postal',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('codigo_postal',null,['class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Tipo de muebles</td>
 							<td>
-								{{Form::select('inmueble',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('inmueble',[],null,['class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 							<td>Tipo de acabados</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Zona de hubicaión</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 							<td>
 								Datos G.P.S.
@@ -137,7 +137,7 @@
 						<tr>
 							<td>Posición en la manzana</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 					</table>
@@ -151,11 +151,11 @@
 						<tr>
 							<td>Izquierda</td>
 							<td>
-								{{Form::text('',null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w50','ng-model'=>'','required'])}}
 							</td>
 							<td>Derecha</td>
 							<td>
-								{{Form::text('',null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w50','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 					</table>
@@ -166,37 +166,37 @@
 						<tr>
 							<td width="150">Izquierda</td>
 							<td>
-								{{Form::text('',null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w50','ng-model'=>'','required'])}}
 							</td>
 							<td width="130">Derecha</td>
 							<td>
-								{{Form::text('',null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w50','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Edad aproximada de la construción en años</td>
 							<td>
-								{{Form::text('',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 							<td>Números de niveles sobre el terreno</td>
 							<td>
-								{{Form::text('',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Altura promedio de entrepisos en metros (m)</td>
 							<td>
-								{{Form::text('',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 							<td>Uso principal</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Tipo de contrución</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'','required'])}}
 								<span class="error"></span>
 							</td>
 						</tr>
@@ -220,7 +220,7 @@
 						<tr>
 							<td>Espesor de muros en centímetros (cm)</td>
 							<td>
-								{{Form::text('',null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w50','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 						<tr>
@@ -230,7 +230,7 @@
 									'Si'=>'Si',
 									'No'=>'No',
 									'No se sabe'=>'No se sabe'
-								],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								],null,['class'=>'w50','ng-model'=>'','required'])}}
 								<span class="error"></span>
 							</td>
 						</tr>
@@ -241,19 +241,19 @@
 									'Si'=>'Si',
 									'No'=>'No',
 									'No se sabe'=>'No se sabe'
-								],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								],null,['class'=>'w50','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Material de los muros</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w50','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Densidad de los muros</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w50','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 					</table>
@@ -264,13 +264,13 @@
 						<tr>
 							<td>Tipo de suelo</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w50','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Tipo de cimentación</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w50','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 					</table>
@@ -285,24 +285,24 @@
 						<tr>
 							<td width="25%">Espesor de losa de techo en centimetros (cm)</td>
 							<td width="25%">
-								{{Form::text('',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 							<td width="25%">Tipo de suelo</td>
 							<td width="25%">
-								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Tipo de piso</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 							<td>Pendiente (inclinacion)</td>
 							<td>
 								{{Form::select('',[
 									'<5%'=>'<5%',
 									'<3%'=>'<3%'
-								],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								],null,['class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 					</table>
@@ -317,33 +317,33 @@
 						<tr>
 							<td width="25%">Largo</td>
 							<td width="25%">
-								{{Form::text('',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 							<td width="25%">Regularidad en plata</td>
 							<td width="25%">
-								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Ancho</td>
 							<td>
-								{{Form::text('',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 							<td>Regularidad vertical</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Alto</td>
 							<td>
-								{{Form::text('',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Área aproximada construida (m2)</td>
 							<td>
-								{{Form::text('',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('',null,['class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 					</table>
@@ -361,11 +361,11 @@
 									'Si'=>'Si',
 									'No'=>'No',
 									'No se sabe'=>'No se sabe'
-								],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								],null,['class'=>'w50','ng-model'=>'','required'])}}
 							</td>
 							<td>Descripción</td>
 							<td>
-								{{Form::textarea('',null,['cols'=>"30",'rows'=>"3",'class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::textarea('',null,['cols'=>"30",'rows'=>"3",'class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 						<tr>
@@ -375,23 +375,23 @@
 									'Si'=>'Si',
 									'No'=>'No',
 									'No se sabe'=>'No se sabe'
-								],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								],null,['class'=>'w50','ng-model'=>'','required'])}}
 							</td>
 							<td>Descripción del daño</td>
 							<td>
-								{{Form::textarea('',null,['cols'=>"30",'rows'=>"3",'class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::textarea('',null,['cols'=>"30",'rows'=>"3",'class'=>'w100','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Mantenimiento</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w50','ng-model'=>'','required'])}}
 							</td>
 							<td>
 								Tipo de fenomeno
 							</td>
 							<td>
-								{{Form::select('',[],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								{{Form::select('',[],null,['class'=>'w50','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 						<tr>
@@ -401,7 +401,7 @@
 									'Si'=>'Si',
 									'No'=>'No',
 									'No se sabe'=>'No se sabe'
-								],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								],null,['class'=>'w50','ng-model'=>'','required'])}}
 							</td>
 							<td>¿Remodelaciones?</td>
 							<td>
@@ -409,7 +409,7 @@
 									'Si'=>'Si',
 									'No'=>'No',
 									'No se sabe'=>'No se sabe'
-								],null,['class'=>'w50','ng-model'=>'formato','required'])}}
+								],null,['class'=>'w50','ng-model'=>'','required'])}}
 							</td>
 						</tr>
 					</table>
