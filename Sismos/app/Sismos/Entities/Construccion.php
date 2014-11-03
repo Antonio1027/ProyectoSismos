@@ -14,6 +14,7 @@ class Construccion extends \Eloquent {
 							'inmueble',
 							'acabado',
 							'zona',
+							'datos_gps',
 							'posicion',
 							'jun_izq',
 							'jun_der',
