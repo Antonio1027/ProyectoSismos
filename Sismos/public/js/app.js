@@ -55,6 +55,16 @@ App.controller('ManagerUsersCtrl', function ($scope, $http) {
 	      $scope.directores = $data;
 	    })
 	};
+	$scope.searchrecords = function(){
+		$http.get('searchregistros',{
+		  params:{
+		  	director: $scope.director,
+		  	formato: $scope.formato
+		  }	
+		}).success(function($data){
+			$scope.registros = $data;			
+		})
+	};
 });
 
 //JavaScript

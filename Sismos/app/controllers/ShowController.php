@@ -2,13 +2,17 @@
 
 use Sismos\Repositories\UserRepo;
 use Sismos\Repositories\DirectoresRepo;
+use Sismos\Repositories\ConstruccionesRepo;
+
 class ShowController extends BaseController {
 
-	protected $userRepo, $directoresRepo;
+	protected $userRepo, $directoresRepo,$construccionesRepo;
 
-	function __construct( UserRepo $userRepo, DirectoresRepo $directoresRepo){
+	function __construct( UserRepo $userRepo, DirectoresRepo $directoresRepo,
+						  ConstruccionesRepo $construccionesRepo){
 		$this->userRepo = $userRepo;
 		$this->directoresRepo = $directoresRepo;
+		$this->construccionesRepo = $construccionesRepo;
 	}
 	
 	public function showHome(){
@@ -37,8 +41,17 @@ class ShowController extends BaseController {
 		$director = $this->directoresRepo->findDirector($id);
 		return View::make('updatedirector',compact('director'));
 	}
+	public function showUpdateRegistro($id){
+		Session::put('idregistro',$id);
+		$registro = $this->construccionesRepo->findConstruccion($id);		
+		$directores = $this->directoresRepo->listDirectores();
+		unset($directores[3]);					
+
+		return View::make('updateregistro',compact('registro','directores'));
+	}
 	public function showRegister(){
-		return View::make('register');
+		$directores = [''=>'Seleccione opción'] + $this->directoresRepo->listDirectores();
+		return View::make('register',compact('directores'));
 	}	
 	public function showAnalytics(){
 		return View::make('analytics');

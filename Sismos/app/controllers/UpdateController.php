@@ -38,4 +38,9 @@ class UpdateController extends BaseController {
 		
 		// Session::forget('iduser');
 	}
+
+	public function updateRegistro(){
+		$idregistro = Session::get('idregistro');
+		dd(Input::all());
+	}
 }

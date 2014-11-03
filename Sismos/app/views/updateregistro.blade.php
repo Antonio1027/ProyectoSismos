@@ -42,46 +42,42 @@
 		</article>
 
 		<article class="banner-right">
-			{{ Form::open(['route' => 'register', 'method' => 'post', 'name' => 'formRegister']) }}
+			{{ Form::model($registro,['route' => 'updateregistro', 'method' => 'put']) }}
 
-			<div class="category" ng-init="tab1 = true" ng-class="{invalid: 
-								!formRegister.formato.$valid || 
-								!formRegister.director_id.$valid || 
-								!formRegister.fecha_elaboracion.$valid || 								
-								!formRegister.ciudad.$valid}">								
+			<div class="category" ng-init="tab1 = true">								
 				<h3 class="category-title" ng-click="tab1 = !tab1">Datos del registro</h3>
 				<div class="category-content blur" ng-show="tab1">
 					<table class="table">
 						<tr>
 							<td>Formato</td>
 							<td>
-								{{Form::text('formato',null,['class'=>'w100','ng-model'=>'formato','required'])}}
+								{{Form::text('formato',null,['class'=>'w100','required'])}}
 							</td>
 							<td>
 								Director de proyecto
 								<span class="icon icon-popout pointer" ng-click="director = !director"></span>
 							</td>
 							<td>
-								 {{Form::select('director_id',$directores,null,['class'=>'w100','ng-model'=>'director_id','required'])}}
+								 {{Form::select('director_id',[''=>$registro->director->full_name] + $directores,null,['class'=>'w100'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Fecha de elaboracion</td>
 							<td>
-								{{Form::input('date','fecha_elaboracion',null,['class'=>'w100','ng-model'=>'fecha_elaboracion','required'])}}
+								{{Form::input('date','fecha_elaboracion',null,['class'=>'w100','required'])}}
 							</td>
 							<td>
 								Elaboro
 								<span class="icon icon-popout pointer" ng-click="elaboro = !elaboro"></span>
 							</td>
 							<td>								
-								{{Form::label(Auth::user()->username)}}
+								{{Form::label($registro->user->username)}}								
 							</td>
 						</tr>
 						<tr>
 							<td>Ciudad</td>
 							<td>
-								{{Form::text('ciudad',null,['class'=>'w100','ng-model'=>'ciudad','required'])}}
+								{{Form::text('ciudad',null,['class'=>'w100','required'])}}
 							</td>
 							<td></td>
 							<td></td>
@@ -97,17 +93,17 @@
 						<tr>
 							<td>Domicilio</td>
 							<td colspan="3">
-								{{Form::textarea('domicilio',null,['cols'=>"50",'rows'=>"3",'class'=>'w100','ng-model'=>'domicilio','required'])}}
+								{{Form::textarea('domicilio',null,['cols'=>"50",'rows'=>"3",'class'=>'w100','required'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Número de habitantes</td>
 							<td>
-								 {{Form::text('habitantes',null,['class'=>'w100','ng-model'=>'habitantes','required'])}}
+								 {{Form::text('habitantes',null,['class'=>'w100','required'])}}
 							</td>
 							<td>Código postal</td>
 							<td>
-								{{Form::input('number','codigo_postal',null,['class'=>'w100','ng-model'=>'codigo_postal','required'])}}
+								{{Form::input('number','codigo_postal',null,['class'=>'w100','required'])}}
 							</td>
 						</tr>
 						<tr>
@@ -121,7 +117,7 @@
 						                        'Intermedio'=>'Intermedio',
 						                        'Lujo'=>'Lujo']
 						                        ,null,
-						                        ['class'=>'w100','ng-model'=>'inmueble','required'])}}
+						                        ['class'=>'w100','required'])}}
 							</td>
 							<td>Tipo de acabados</td>
 							<td>
@@ -133,7 +129,7 @@
 						                        'Intermedio'=>'Intermedio',
 						                        'Lujo'=>'Lujo'],
 						                         null,
-						                         ['class'=>'w100','ng-model'=>'acabado','required'])}}
+						                         ['class'=>'w100','required'])}}
 							</td>
 						</tr>
 						<tr>
@@ -148,14 +144,14 @@
 						                         '5: Sur-Poniente'=>'Zona 5: Sur-Poniente'
 						                        ],
 						                        null,
-						                        ['class'=>'w100','ng-model'=>'zona','required'])}}
+						                        ['class'=>'w100','required'])}}
 							</td>
 							<td>
 								Datos G.P.S.
-								<span class="icon icon-home pointer" ng-click="map = !map"></span>
+								<span class="icon icon-home pointer"  ng-click="map"></span>
 							</td>
 							<td>
-								{{Form::text('datos_gps',null,['class'=>'w100','ng-model'=>'coordinates','required'])}}
+								{{Form::text('datos_gps',null,['class'=>'w100','ng-init'=>'datos_gps','required'])}}
 							</td>
 						</tr>
 						<tr>
@@ -170,7 +166,7 @@
 						                        'Intermedia y libre de un lado'=>'Intermedia y libre de un lado',
 						                        'Libre'=>'Libre'],
 						                        null,
-						                        ['class'=>'w100','ng-model'=>'posicion','required'])}}
+						                        ['class'=>'w100','required'])}}
 							</td>
 						</tr>
 					</table>
@@ -184,11 +180,11 @@
 						<tr>
 							<td>Izquierda</td>
 							<td>
-								{{Form::text('jun_izq',null,['class'=>'w50','ng-model'=>'jun_izq','required'])}}
+								{{Form::text('jun_izq',null,['class'=>'w50','required'])}}
 							</td>
 							<td>Derecha</td>
 							<td>
-								{{Form::text('jun_der',null,['class'=>'w50','ng-model'=>'jun_der','required'])}}
+								{{Form::text('jun_der',null,['class'=>'w50','required'])}}
 							</td>
 						</tr>
 					</table>
@@ -199,27 +195,27 @@
 						<tr>
 							<td width="150">Izquierda</td>
 							<td>
-								{{Form::text('alt_izq',null,['class'=>'w50','ng-model'=>'alt_izq','required'])}}
+								{{Form::text('alt_izq',null,['class'=>'w50','required'])}}
 							</td>
 							<td width="130">Derecha</td>
 							<td>
-								{{Form::text('alt_der',null,['class'=>'w50','ng-model'=>'alt_der','required'])}}
+								{{Form::text('alt_der',null,['class'=>'w50','required'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Edad aproximada de la construción en años</td>
 							<td>
-								{{Form::text('edad',null,['class'=>'w100','ng-model'=>'edad','required'])}}
+								{{Form::text('edad',null,['class'=>'w100','required'])}}
 							</td>
 							<td>Números de niveles sobre el terreno</td>
 							<td>
-								{{Form::text('niveles',null,['class'=>'w100','ng-model'=>'niveles','required'])}}
+								{{Form::text('niveles',null,['class'=>'w100','required'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Altura promedio de entrepisos en metros (m)</td>
 							<td>
-								{{Form::text('alt_entrepisos',null,['class'=>'w100','ng-model'=>'alt_entrepisos','required'])}}
+								{{Form::text('alt_entrepisos',null,['class'=>'w100','required'])}}
 							</td>
 							<td>Uso principal</td>
 							<td>
@@ -234,7 +230,7 @@
 						                        'Religioso'=>'Religioso'
 						                        ],
 						                        null,
-						                        ['class'=>'w100','ng-model'=>'uso','required'])}}
+						                        ['class'=>'w100','required'])}}
 							</td>
 						</tr>
 						<tr>
@@ -290,7 +286,7 @@
 						                                'Piedra-Madera'=>'Madera',
 						                                'Piedra-Teja'=>'Teja']],                                                          
 						                        null,
-						                        ['class'=>'w100','ng-model'=>'tipo_construccion','required'])}}
+						                        ['class'=>'w100','required'])}}
 								<span class="error"></span>
 							</td>
 						</tr>
@@ -314,7 +310,7 @@
 						<tr>
 							<td>Espesor de muros en centímetros (cm)</td>
 							<td>
-								{{Form::text('espesor_muros',null,['class'=>'w50','ng-model'=>'espesor_muros','required'])}}
+								{{Form::text('espesor_muros',null,['class'=>'w50','required'])}}
 							</td>
 						</tr>
 						<tr>
@@ -325,7 +321,7 @@
 									'Si'=>'Si',
 									'No'=>'No',
 									'No se sabe'=>'No se sabe'
-								],null,['class'=>'w50','ng-model'=>'repello','required'])}}
+								],null,['class'=>'w50','required'])}}
 								<span class="error"></span>
 							</td>
 						</tr>
@@ -338,7 +334,7 @@
 								                  'No'=>'No',
 								                  'No se sabe'=>'No se sabe'],
 								                  null,
-								                  ['class'=>'w50','ng-model'=>'columnas','required'])}}
+								                  ['class'=>'w50','required'])}}
 							</td>
 						</tr>
 						<tr>
@@ -361,7 +357,7 @@
 						                        'Piedra'=>'Piedra',
 						                        'Teja de cartón'=>'Teja de cartón'],
 						                        null,
-						                        ['class'=>'w50','ng-model'=>'material_muro','required'])}}
+						                        ['class'=>'w50','required'])}}
 							</td>
 						</tr>
 						<tr>
@@ -376,7 +372,7 @@
 						                         'Poca'=>'Poca',
 						                         'Solo en el perimetro'=>'Solo en el perimetro'],
 						                         null,
-						                         ['class'=>'w50','ng-model'=>'densidad_muro','required'])}}
+						                         ['class'=>'w50','required'])}}
 							</td>
 						</tr>
 					</table>
@@ -393,7 +389,7 @@
 						                          'B:Medio'=>'Material B:Medio',
 						                          'C:Solido'=>'Material C:Solido'],
 						                         null,
-						                         ['class'=>'w50','ng-model'=>'tipo_suelo','required'])}}
+						                         ['class'=>'w50','required'])}}
 							</td>
 						</tr>
 						<tr>
@@ -415,7 +411,7 @@
 					                          'Zapatas Corridas'=>'Zapatas Corridas'
 					                          ],
 					                         null,
-					                         ['class'=>'w50','ng-model'=>'tipo_cimentacion','required'])}}
+					                         ['class'=>'w50','required'])}}
 							</td>
 						</tr>
 					</table>
@@ -430,7 +426,7 @@
 						<tr>
 							<td width="25%">Espesor de losa de techo en centimetros (cm)</td>
 							<td width="25%">
-								{{Form::text('espesor_techo',null,['class'=>'w100','ng-model'=>'espesor_techo','required'])}}
+								{{Form::text('espesor_techo',null,['class'=>'w100','required'])}}
 							</td>
 							<td width="25%">Tipo de techo</td>
 							<td width="25%">
@@ -450,7 +446,7 @@
 						                        'Teja'=>'Teja',
 						                        'Teja de barro'=>'Teja de barro'],      
 						                        null,
-						                        ['class'=>'w100','ng-model'=>'tipo_techo','required'])}}                
+						                        ['class'=>'w100','required'])}}                
 							</td>
 						</tr>
 						<tr>
@@ -466,15 +462,18 @@
 						                        'Piso ceramico'=>'Piso ceramico',
 						                        'Tierra'=>'Tierra'],
 						                        null,
-						                        ['class'=>'w100','ng-model'=>'tipo_piso','required'])}}
+						                        ['class'=>'w100','required'])}}
 							</td>
 							<td>Pendiente (inclinacion)</td>
 							<td>
-								{{Form::select('pendiente',[
-							                  ''=>'Seleccione opción',
+								{{Form::select('pendiente',
+											[		
+											$registro->pendiente=>$registro->pendiente,											
 							                  '&lt;5%'=>'&lt;5%',
 							                  '&gt;5%'=>'&gt;5%'
-							                ],null,['class'=>'w100','ng-model'=>'pendiente','required'])}}
+							                ],
+							                null,
+							                ['class'=>'w100','required'])}}							                
 							</td>
 						</tr>
 					</table>
@@ -489,7 +488,7 @@
 						<tr>
 							<td width="25%">Largo</td>
 							<td width="25%">
-								{{Form::text('largo',null,['class'=>'w100','ng-model'=>'largo','required'])}}
+								{{Form::text('largo',null,['class'=>'w100','required'])}}
 							</td>
 							<td width="25%">Regularidad en planta</td>
 							<td width="25%">
@@ -501,13 +500,13 @@
 						                        'Intermedia'=>'Intermedia',
 						                        'Media'=>'Media'],
 						                        null,
-						                        ['class'=>'w100','ng-model'=>'reg_planta','required'])}}
+						                        ['class'=>'w100','required'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Ancho</td>
 							<td>
-								{{Form::text('ancho',null,['class'=>'w100','ng-model'=>'ancho','required'])}}
+								{{Form::text('ancho',null,['class'=>'w100','required'])}}
 							</td>
 							<td>Regularidad vertical</td>
 							<td>
@@ -519,19 +518,19 @@
 						                        'Intermedia'=>'Intermedia',
 						                        'Media'=>'Media'],
 						                        null,
-						                        ['class'=>'w100','ng-model'=>'reg_vertical','required'])}}
+						                        ['class'=>'w100','required'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Alto</td>
 							<td>
-								{{Form::text('alto',null,['class'=>'w100','ng-model'=>'alto','required'])}}
+								{{Form::text('alto',null,['class'=>'w100','required'])}}
 							</td>
 						</tr>
 						<tr>
 							<td>Área aproximada construida (m2)</td>
 							<td>
-								{{Form::text('area',null,['class'=>'w100','ng-model'=>'area','required'])}}
+								{{Form::text('area',null,['class'=>'w100','required'])}}
 							</td>
 						</tr>
 					</table>
@@ -550,11 +549,11 @@
 							                  'Si'=>'Si',
 							                  'No'=>'No',
 							                  'No se sabe'=>'No se sabe'
-							     	           ],null,['class'=>'w50','ng-model'=>'cambios_sistema','required'])}}
+							     	           ],null,['class'=>'w50','required'])}}
 							</td>
 							<td>Descripción</td>
 							<td>
-								{{Form::textarea('descripcion',null,['cols'=>"30",'rows'=>"3",'class'=>'w100','ng-model'=>'descripcion','required'])}}
+								{{Form::textarea('descripcion',null,['cols'=>"30",'rows'=>"3",'class'=>'w100','required'])}}
 							</td>
 						</tr>
 						<tr>
@@ -565,11 +564,11 @@
 							                  'Si'=>'Si',
 							                  'No'=>'No',
 							                  'No se sabe'=>'No se sabe'
-							                	],null,['class'=>'w50','ng-model'=>'danos','required'])}}
+							                	],null,['class'=>'w50','required'])}}
 							</td>
 							<td>Descripción del daño</td>
 							<td>
-								{{Form::textarea('descripcion_danos',null,['cols'=>"30",'rows'=>"3",'class'=>'w100','ng-model'=>'descripcion_danos','required'])}}
+								{{Form::textarea('descripcion_danos',null,['cols'=>"30",'rows'=>"3",'class'=>'w100','required'])}}
 							</td>
 						</tr>
 						<tr>
@@ -583,7 +582,7 @@
 						                        'Malo'=>'Malo',
 						                        'Nulo'=>'Nulo'],
 						                        null,
-						                        ['class'=>'w50','ng-model'=>'mantenimiento','required'])}}
+						                        ['class'=>'w50','required'])}}
 							</td>
 							<td>
 								Tipo de fenomeno
@@ -604,7 +603,7 @@
 						                        'Sismo, viento y lluvia'=>'Sismo, viento y lluvia',
 						                        'Viento'=>'Viento'],
 						                        null,
-						                        ['class'=>'w50','ng-model'=>'fenomeno','required'])}}
+						                        ['class'=>'w50','required'])}}
 							</td>
 						</tr>
 						<tr>
@@ -615,7 +614,7 @@
 							                  'Si'=>'Si',
 							                  'No'=>'No',
 							                  'No se sabe'=>'No se sabe'
-							                	],null,['class'=>'w50','ng-model'=>'reparaciones','required'])}}
+							                	],null,['class'=>'w50','required'])}}
 							</td>
 							<td>¿Remodelaciones?</td>
 							<td>
@@ -625,16 +624,16 @@
 							                  'No'=>'No',
 							                  'No se sabe'=>'No se sabe'
 
-							                ],null,['class'=>'w50','ng-model'=>'remodelaciones','required'])}}
+							                ],null,['class'=>'w50','required'])}}
 							</td>
 						</tr>
 					</table>
 				</div>
 			</div>
 
-			<!-- <div class="text-center margin-bottom blur" ng-if='formRegister.$valid'> -->
-				<button type="submit" class="btn btn-blue"> Agregar nuevo registro</button>
-			<!-- </div> -->
+			<div class="text-center margin-bottom blur">
+				<button type="submit" class="btn btn-blue"> Actualizar registro</button>
+			</div>
 
 			{{Form::close()}}
 		</article>

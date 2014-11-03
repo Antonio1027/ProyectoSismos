@@ -3,19 +3,32 @@
 use Sismos\Repositories\UserRepo;
 use Sismos\Managers\UserCreateManager;
 use Sismos\Managers\DirectorManager;
+use Sismos\Managers\ConstruccionManager;
 use Sismos\Repositories\DirectoresRepo;
+use Sismos\Repositories\ConstruccionesRepo;
 
 class CreateController extends BaseController {
 
-	protected $userRepo, $directoresRepo;
+	protected $userRepo, $directoresRepo,$construccionesRepo;
 
-	function __construct( UserRepo $userRepo, DirectoresRepo $directoresRepo){
+	function __construct( UserRepo $userRepo, DirectoresRepo $directoresRepo,
+						  ConstruccionesRepo $construccionesRepo){
 		$this->userRepo = $userRepo;
 		$this->directoresRepo = $directoresRepo;
+		$this->construccionesRepo = $construccionesRepo;
 	}
 	
-	public function createRegister(){
-		dd(Input::all());
+	public function createRegister(){		
+		$construccion = $this->construccionesRepo->newConstruccion();		
+		$construccion->user_id = Auth::user()->id;
+		
+		$manager = new ConstruccionManager($construccion,Input::all());
+		if($manager->save()){
+			// Session::flash('notifications','Registro creado correctamente');
+			return Redirect::route('home');
+		}
+		else
+			return Redirect::back()->withInput()->withErrors($manager->getErrors());	
 	}
 	public function createUser(){
 		$user = $this->userRepo->newUser();

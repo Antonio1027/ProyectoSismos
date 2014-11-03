@@ -5,105 +5,101 @@ use Illuminate\Database\Schema\Blueprint;
 
 class CreateConstruccionesTable extends Migration {
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
-		Schema::create('construcciones', function(Blueprint $table)
-		{
-			$table->increments('id');
-			$table->string('formato');
-			$table->date('fecha_elaboracion');
+  /**
+   * Run the migrations.
+   *
+   * @return void
+   */
+  public function up()
+  {
+    Schema::create('construcciones', function(Blueprint $table)
+    {
+      $table->increments('id');
+      $table->integer('formato');
+      $table->date('fecha_elaboracion');
+      $table->string('ciudad');       
 
-			//---------------datos generales-----------
-			$table->string('domicilio');
-			$table->integer('habitantes')->unsigned();
-			$table->integer('codigo_postal')->unsigned();			
-			$table->string('datos_gps');
+      //---------------datos generales-----------
+      $table->string('domicilio');
+      $table->integer('habitantes')->unsigned();
+      $table->integer('codigo_postal')->unsigned();     
+      $table->string('datos_gps');
 
-			//juntas en centimetros
-			$table->float('jun_izq');
-			$table->float('jun_der');
+      $table->enum('inmueble',['Bajo','Económico','Elevado','Intermedio','Lujo']);
+      $table->enum('acabado',['Bajo','Económico','Elevado','Intermedio','Lujo']); 
+      $table->enum('zona',['1: Norte-Oriente','2: Norte-Poniente','3: Centro','4: Sur-Oriente','5: Sur-Poniente']);
+      $table->enum('posicion',['Esquina','Esquina libre a un lado','Esquina y libre ambos lados','Intermedia','Intermedia y libre de un lado','Libre']);
+      //juntas en centimetros
+      $table->float('jun_izq');
+      $table->float('jun_der');
 
-			//altura de construccion
-			$table->float('alt_izq');
-			$table->float('alt_der');
+      //altura de construccion
+      $table->float('alt_izq');
+      $table->float('alt_der');
 
-			$table->integer('edad');
-			$table->integer('niveles');
-			$table->float('alt_entrepisos');
-			$table->string('img');
-			// -------------------------
-			// caracteristicas estructurales de los muros
+      $table->integer('edad')->unsigned();
+      $table->integer('niveles')->unsigned();
+      $table->float('alt_entrepisos');
+      $table->string('uso');
+      $table->string('tipo_construccion');
 
-			$table->float('espesor_muros');
-			$table->enum('repello',['SI','NO','NO SE SABE']);
-			$table->enum('columnas',['SI','NO','NO SE SABE']);
+      $table->string('image');
+      // -------------------------
+      // caracteristicas estructurales de los muros
 
-			// ----------------	cimentacion		
-			$table->enum('tipo_suelo',['MATERIAL A','MATERIAL B','MATERIAL C']);
-			//---------------cubiertas
-			$table->float('espesor_techo');
-			$table->enum('pendiente',['<5%','>5%']);
+      $table->float('espesor_muros');
+      $table->enum('repello',['Si','No','No se sabe']);
+      $table->enum('columnas',['Si','No','No se sabe']);
+      $table->string('material_muro');
+      $table->string('densidad_muro');
 
-			//geometria
-			$table->float('largo');			
-			$table->float('ancho');
-			$table->float('alto');
-			$table->float('area');
+      // ---------------- cimentacion   
+      $table->enum('tipo_suelo',['A:Blando','B:Medio','C:Solido']);
+      $table->string('tipo_cimentacion');
+      //---------------cubiertas
+      $table->float('espesor_techo');
+      $table->string('tipo_techo');
+      $table->enum('tipo_piso',['Cemento','Concreto','Lozeta de barro','Marmol','Mozaico','Piso ceramico','Tierra']);
+      $table->string('pendiente');
 
-			$table->enum('cambios_sistema',['SI','NO','NO SE SABE']);
-			$table->enum('mantenimiento',['BUENO','MALO','INCOMPLETO','NULO']);
-			$table->enum('danos',['SI','NO','NO SE SABE']);
-			$table->enum('reparaciones',['SI','NO','NO SE SABE']);
-			$table->string('descripcion');
-			$table->enum('remodelaciones',['SI','NO','NO SE SABE']);
-			$table->string('descripcion_danos');
+      //geometria
+      $table->float('largo');     
+      $table->float('ancho');
+      $table->float('alto');
+      $table->float('area');
+      //regularidad
+      $table->enum('reg_planta',['Alta','Baja','Buena','Intermedia','Media']);
+      $table->enum('reg_vertical',['Alta','Baja','Buena','Intermedia','Media']);
 
+      $table->enum('cambios_sistema',['Si','No','No se sabe']);
+      $table->enum('mantenimiento',['Adecuado','Bueno','Incompleto','Malo','Nulo']);
+      $table->enum('danos',['Si','No','No se sabe']);
+      $table->enum('reparaciones',['Si','No','No se sabe']);
+      $table->string('fenomeno');
+      $table->string('descripcion');
+      $table->enum('remodelaciones',['Si','No','No se sabe']);
+      $table->string('descripcion_danos');
 
-			//foreign keys			
-			$table->integer('inmueble');
-			$table->integer('acabado');
-			$table->integer('ubicacion');
-			$table->integer('posicion');
-			$table->integer('tipo_construccion');
+      //foreign keys                                                       
+          
+      $table->integer('director_id')->unsigned()->index();
+      $table->foreign('director_id')->references('id')->on('directores');     
+      $table->integer('user_id')->unsigned()->index();
+      $table->foreign('user_id')->references('id')->on('users');      
 
-			$table->integer('tipo_techo');
-			$table->integer('tipo_piso');
-
-			$table->integer('material');
-			$table->integer('densidad');
-			$table->integer('tipo_cimentacion');
-
-			//regularidad
-			$table->integer('planta');
-			$table->integer('vertical');
-
-			$table->integer('fenomeno');
-
-
-			$table->integer('ciudad_id')->unsigned()->index();
-			// $table->foreign('ciudad_id')->references('id')->on('ciudades');
-			$table->integer('director_id')->unsigned()->index();
-			// $table->foreign('director_id')->references('id')->on('directores');
-			$table->integer('encuestador_id')->unsigned()->index();
-			// $table->foreign('encuestador_id')->references('id')->on('encuestadores');
-			$table->timestamps();
-		});
-	}
+      $table->timestamps();
+    });
+  }
 
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Schema::drop('construcciones');
-	}
+  /**
+   * Reverse the migrations.
+   *
+   * @return void
+   */
+  public function down()
+  {
+    Schema::drop('construcciones');
+  }
 
 }

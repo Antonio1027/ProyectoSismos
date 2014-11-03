@@ -57,33 +57,36 @@
 
             <article class="fieldsearch">                
                 <input type="text" placeholder="Numero de formato" ng-model="formato" ng-change="searchrecords()">
-                {{Form::select('directores',$directores,null,['class'=>'','ng-model'=>'directores','ng-change'=>'searchrecords()'])}}
+                {{Form::select('directores',$directores,null,['class'=>'','ng-model'=>'director','ng-change'=>'searchrecords()'])}}
             </article>
 
-            <article ng-init="" ng-show="!users">
+            <article ng-init="searchrecords()" ng-show="registros">
                 <table width="100%">
                     <tr>
-                        <td align="center"><strong>Folio</strong></td>
+                        <td align="center"><strong>Formato</strong></td>
                         <td align="center"><strong>Zona de ubicación</strong></td>
                         <td align="center"><strong>Tipo de construcción</strong></td>
                         <td align="center"></td>
                     </tr>
-                    <tr class="user-item" ng-repeat="user in users">
+                    <tr class="user-item" ng-repeat="registro in registros">
                         <td>
-                            <input type="text" placeholder="Nombre de usuario" ng-model="user.username">
+                            <input type="text" placeholder="Nombre de usuario" ng-model="registro.formato">
                         </td>
                         <td>
-                            <input type="text" placeholder="Tipo de usuario" ng-model="user.type">                        
+                            <input type="text" placeholder="Tipo de usuario" ng-model="registro.zona">                        
                         </td>
                         <td>
-                            <a href="updateuser/@{{user.id}}" class="btn btn-green">Ver / Modificar</a>
-                            <a href="deleteuser/@{{user.id}}" class="btn btn-red" onClick="confirmar(event,'Esta seguro que quiere eliminar al usuario?')">Eliminar</a>                        
+                            <input type="text" placeholder="Tipo de usuario" ng-model="registro.tipo_construccion">                        
+                        </td>
+                        <td>
+                            <a href="updateregistro/@{{registro.id}}" class="btn btn-green">Ver / Modificar</a>
+                            <a href="deleteregistro/@{{registro.id}}" class="btn btn-red" onClick="confirmar(event,'Esta seguro que quiere eliminar este registro?')">Eliminar</a>                        
                         </td>
                     </tr>
                 </table>
             </article>
-            <article ng-hide="users">
-                <h2 class="text-center">No se encontrador registros</h2>
+            <article ng-hide="registros">
+                <h2 class="text-center">No se encontraron registros</h2>
             </article>
         </section>
 
