@@ -1,6 +1,7 @@
 <?php 
 
 namespace Sismos\Repositories;
+
 use Sismos\Entities\Construccion;
 
 class ConstruccionesRepo extends \Eloquent{
