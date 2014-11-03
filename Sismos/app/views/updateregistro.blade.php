@@ -151,7 +151,7 @@
 								<span class="icon icon-home pointer"  ng-click="map"></span>
 							</td>
 							<td>
-								{{Form::text('datos_gps',null,['class'=>'w100','ng-init'=>'datos_gps','required'])}}
+								{{Form::text('datos_gps',null,['class'=>'w100','ng-init'=>'datos_gps','ng-model'=>'coordinates','required'])}}
 							</td>
 						</tr>
 						<tr>

@@ -2,14 +2,20 @@
 
 use Sismos\Repositories\UserRepo;
 use Sismos\Managers\UserUpdateManager;
+use Sismos\Managers\RegistroUpdateManager;
 use Sismos\Managers\DirectorManager;
 use Sismos\Repositories\DirectoresRepo;
+use Sismos\Repositories\ConstruccionesRepo;
+
 class UpdateController extends BaseController {
 
-		protected $userRepo, $directoresRepo;
-	function __construct( UserRepo $userRepo, DirectoresRepo $directoresRepo){
+		protected $userRepo, $directoresRepo,$construccionesRepo;
+
+	function __construct( UserRepo $userRepo, DirectoresRepo $directoresRepo,
+						  ConstruccionesRepo $construccionesRepo){
 		$this->userRepo = $userRepo;
 		$this->directoresRepo = $directoresRepo;
+		$this->construccionesRepo = $construccionesRepo;
 	}
 	
 	public function updateUser(){
@@ -39,8 +45,13 @@ class UpdateController extends BaseController {
 		// Session::forget('iduser');
 	}
 
-	public function updateRegistro(){
-		$idregistro = Session::get('idregistro');
-		dd(Input::all());
+	public function updateRegistro(){				
+		$registro = $this->construccionesRepo->findConstruccion(Session::get('idregistro'));		
+		$manager = new RegistroUpdateManager($registro,Input::all());
+		if($manager->save()){
+			Session::flash('notifications','Registro actualizado');
+			return Redirect::route('managerusers');		
+		}
+		return Redirect::back()->withInput()->withErrors($manager->getErrors());
 	}
 }

@@ -20,8 +20,7 @@ class CreateController extends BaseController {
 	
 	public function createRegister(){		
 		$construccion = $this->construccionesRepo->newConstruccion();		
-		$construccion->user_id = Auth::user()->id;
-		
+		$construccion->user_id = Auth::user()->id;		
 		$manager = new ConstruccionManager($construccion,Input::all());
 		if($manager->save()){
 			// Session::flash('notifications','Registro creado correctamente');
@@ -40,7 +39,7 @@ class CreateController extends BaseController {
 		return Redirect::back()->withInput()->withErrors($manager->getErrors());
 	}
 	public function createDirector(){
-		$director = $this->directoresRepo->newDirector();
+		$director = $this->directoresRepo->newDirector();		
 		$manager = new DirectorManager($director, Input::all());
 		if($manager->save()){
 			// Session::flash('notifications','Usuario creado correctamente');

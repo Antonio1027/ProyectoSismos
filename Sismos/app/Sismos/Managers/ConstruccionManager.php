@@ -5,7 +5,7 @@ namespace Sismos\Managers;
 class ConstruccionManager extends BaseManager{
 
 	public function getRules(){
-			$rules = [
+			$rules = [						
 						'formato'	 		=>	'required|numeric|unique:construcciones',
 						'director_id'		=>	'required',
 						'fecha_elaboracion' =>	'required|date',
@@ -55,7 +55,19 @@ class ConstruccionManager extends BaseManager{
 					 ];	
 		return $rules;
 	}
-	public function prepareData($data){		
+
+	public function moveImage($data){		
+		$aux = explode('.',$data['image']->getClientOriginalName());
+		$name = \Str::slug($aux[0].rand()).'.'.$aux[1];
+		$data['image']->move('images', $name);
+		$data['image'] = $name;
+		return $data;
+	}
+
+	public function prepareData($data){	
+		// if(isset($data['image'])){			
+		// 	$data = $this->moveImage($data);
+		// }	
 		$data['formato'] = strip_tags($data['formato']);
 		$data['director_id'] = strip_tags($data['director_id']);
 		$data['fecha_elaboracion'] = strip_tags($data['fecha_elaboracion']);
