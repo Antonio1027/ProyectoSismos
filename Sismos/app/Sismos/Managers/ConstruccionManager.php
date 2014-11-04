@@ -65,8 +65,7 @@ class ConstruccionManager extends BaseManager{
 	}
 
 	public function prepareData($data){	
-		if(isset($data['image'])){			
-			dd($data);
+		if(isset($data['image'])){						
 			$data = $this->moveImage($data);
 		}	
 		$data['formato'] = strip_tags($data['formato']);
