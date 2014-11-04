@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <div ng-controller="ManagerUsersCtrl">
+    <div ng-controller="ManagerCtrl">
         
         <section class="manager">
             <a href="{{route('createuser')}}" class="btn btn-green btn-new">Nuevo usuario</a>
@@ -24,7 +24,8 @@
                 </select>
             </article>
 
-            <article ng-init="search()" ng-show="users">
+            <article ng-show="users">
+                <!-- ng-init="search()" -->
                 <table width="100%">
                     <tr>
                         <td align="center"><strong>Nombre de usuario</strong></td>
@@ -60,7 +61,8 @@
                 {{Form::select('directores',$directores,null,['class'=>'','ng-model'=>'director','ng-change'=>'searchrecords()'])}}
             </article>
 
-            <article ng-init="searchrecords()" ng-show="registros">
+            <article  ng-show="registros">
+                <!-- ng-init="searchrecords()" -->
                 <table width="100%">
                     <tr>
                         <td align="center"><strong>Formato</strong></td>
@@ -70,13 +72,13 @@
                     </tr>
                     <tr class="user-item" ng-repeat="registro in registros">
                         <td>
-                            <input type="text" placeholder="Nombre de usuario" ng-model="registro.formato">
+                            <input type="text" placeholder="Nombre de usuario" ng-model="registro.formato" class="w50">
                         </td>
                         <td>
-                            <input type="text" placeholder="Tipo de usuario" ng-model="registro.zona">                        
+                            <input type="text" placeholder="Zona de ubicación" ng-model="registro.zona">                        
                         </td>
                         <td>
-                            <input type="text" placeholder="Tipo de usuario" ng-model="registro.tipo_construccion">                        
+                            <input type="text" placeholder="Tipo de construcción" ng-model="registro.tipo_construccion">                        
                         </td>
                         <td>
                             <a href="updateregistro/@{{registro.id}}" class="btn btn-green">Ver / Modificar</a>
@@ -99,7 +101,8 @@
                 <input type="text" class="text-center" placeholder="Nombre" ng-model="full_name" ng-change="searchdirectores()">
             </article>
 
-            <article ng-init="searchdirectores()" ng-show="directores">
+            <article ng-show="directores">
+                <!-- ng-init="searchdirectores()" -->
                 <table width="100%">
                     <tr>
                         <td align="center"><strong>Nombre del director</strong></td>

@@ -18,7 +18,7 @@ class CreateController extends BaseController {
 		$this->construccionesRepo = $construccionesRepo;
 	}
 	
-	public function createRegister(){		
+	public function createRegister(){
 		$construccion = $this->construccionesRepo->newConstruccion();		
 		$construccion->user_id = Auth::user()->id;		
 		$manager = new ConstruccionManager($construccion,Input::all());

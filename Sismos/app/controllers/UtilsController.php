@@ -35,5 +35,12 @@ class UtilsController extends BaseController {
 
 		return Response::json($records);
 	}
+	public function searchRegistro(){		
+		$id = Input::get('id');
+
+		$record = $this->construccionesRepo->findConstruccion($id);
+
+		return Response::json($record);
+	}
 	
 }

@@ -52,6 +52,7 @@ Route::group(['before'=>'auth'], function(){
 	Route::get('searchusers', [ 'uses'=>'UtilsController@searchUsers']);
 	Route::get('searcdirectores', ['uses'=>'UtilsController@searchDirectores']);
 	Route::get('searchregistros',['as'=>'searchregistros','uses'=>'UtilsController@searchRegistros']);
+	Route::get('searchregistro',['as'=>'searchregistro','uses'=>'UtilsController@searchRegistro']);
 
 });
 
