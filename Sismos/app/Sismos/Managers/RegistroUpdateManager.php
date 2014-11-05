@@ -25,7 +25,7 @@ class RegistroUpdateManager extends BaseManager{
 		if(isset($data['image'])){						
 			$data = $this->moveImage($data);
 		}
-		$return $data;
+		return $data;
 	}
 
 }
