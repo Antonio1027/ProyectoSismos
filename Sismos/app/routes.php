@@ -53,6 +53,7 @@ Route::group(['before'=>'auth'], function(){
 	Route::get('searcdirectores', ['uses'=>'UtilsController@searchDirectores']);
 	Route::get('searchregistros',['as'=>'searchregistros','uses'=>'UtilsController@searchRegistros']);
 	Route::get('searchregistro',['as'=>'searchregistro','uses'=>'UtilsController@searchRegistro']);
+	Route::get('gettechos',['as'=>'gettechos','uses'=>'UtilsController@getTecho']);
 
 });
 
