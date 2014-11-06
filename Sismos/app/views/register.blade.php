@@ -23,22 +23,7 @@
 				</div>
 			</div>
 
-			<div class="banner-left-section text-center">
-				<div class="box banner-left-box">
-					<span class="icon-popout"></span>
-				</div>
-				<div class="banner-left-content banner-left-option">
-					<div class="margin-bottom blur" ng-show="director">
-						<span>Agregar nuevo director de proyecto</span>
-						<input type="text" class="w100">
-						<button type="submit" class="btn btn-blue" ng-click="director = !director">Agregar</button>
-					</div>
-					<div class="margin-bottom blur" ng-show="elaboro">
-						<span>Agregar nuevo encuestador</span>
-						<input type="text" class="w100">
-						<button type="submit" class="btn btn-blue" ng-click="elaboro = !elaboro">Agregar</button>
-					</div>
-				</div>
+				
 		</article>
 
 		<article class="banner-right">
@@ -58,7 +43,6 @@
 							</td>
 							<td>
 								Director de proyecto
-								<span class="icon icon-popout pointer" ng-click="director = !director"></span>
 							</td>
 							<td>
 								 {{Form::select('director_id',$directores,null,['class'=>'w100','ng-model'=>'director_id', 'required'])}}
@@ -71,7 +55,6 @@
 							</td>
 							<td>
 								Elaboro
-								<span class="icon icon-popout pointer" ng-click="elaboro = !elaboro"></span>
 							</td>
 							<td>								
 								{{Form::label(Auth::user()->username)}}
@@ -151,7 +134,7 @@
 							</td>
 							<td>
 								Datos G.P.S.
-								<span class="icon icon-home pointer" ng-click="map = !map"></span>
+								<span class="icon icon-map pointer" ng-click="map = !map"></span>
 							</td>
 							<td>
 								{{Form::text('datos_gps',null,['class'=>'w100','ng-model'=>'datos_gps'])}}

@@ -18,23 +18,23 @@
 			
 			@if( is_basico() )
 				<li class="item">
-					<a href="{{route('register')}}"><span class="icon icon-home"></span>Capturas de registros</a>
+					<a href="{{route('register')}}"><span class="icon icon-edit"></span>Capturas de registros</a>
 				</li>
 			@endif
 			@if( is_experto() )
 				<li class="item">
-					<a href="{{route('analytics')}}"><span class="icon icon-calculator"></span>Calculo de vulnarabilidad</a>
+					<a href="{{route('analytics')}}"><span class="icon icon-chart"></span>Calculo de vulnarabilidad</a>
 				</li>
 			@endif
 			
 			@if( is_admin() )
 				<li class="item">
-					<a href="{{route('managerusers')}}"><span class="icon icon-calculator"></span>Administrar</a>
+					<a href="{{route('managerusers')}}"><span class="icon icon-attachment"></span>Administrar</a>
 				</li>
 			@endif
 			@if( Auth::check() )
 				<li class="item">
-					<a href="{{route('logout')}}"><span class="icon icon-calculator"></span>Cerrar sesion</a>
+					<a href="{{route('logout')}}"><span class="icon icon-error"></span>Cerrar sesion</a>
 				</li>
 			@endif
 

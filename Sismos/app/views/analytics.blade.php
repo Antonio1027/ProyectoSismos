@@ -20,8 +20,6 @@
 					<option value="">Zona 4: Oriente</option>
 					<option value="">Zona 5: Sur - Oriente</option>
 					<option value="">Zona 6: Sur - Poniente</option>
-					<option value=""></option>
-					<option value=""></option>
 				</select>
 			</div>
 			<div>

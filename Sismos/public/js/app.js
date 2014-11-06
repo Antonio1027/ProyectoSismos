@@ -32,6 +32,7 @@ var App = angular.module('Sismos', ['ngAnimate']);
 
 App.controller('RegisterController',function ($scope, $http) {
 	var url = document.URL.split('/').pop();
+	$scope.list_records = [];
 	$scope.regex_number = /^[0-9]*(\.[0-9]+)?$/;
 
 	$scope.initmaps = function(){
@@ -52,6 +53,19 @@ App.controller('RegisterController',function ($scope, $http) {
 			$scope.record = $data;
 			setMarker($scope.record.datos_gps);
 		})
+	};
+	$scope.searchrecords = function(){
+		$http.get('../searchregistros',{
+		  params:{
+		  	director: '',
+		  	formato: ''
+		  }	
+		}).success(function($data){
+			angular.forEach($data, function(value, key){
+				$scope.list_records.push(value.id);
+			});
+			$scope.index = $scope.list_records.indexOf(parseInt(url));
+		});
 	};
 });
 

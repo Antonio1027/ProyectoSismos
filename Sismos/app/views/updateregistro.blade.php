@@ -23,21 +23,15 @@
 				</div>
 			</div>
 
-			<div class="banner-left-section text-center">
+			<div class="banner-left-section text-center" ng-init="searchrecords()">
 				<div class="box banner-left-box">
-					<span class="icon-popout"></span>
+					<span class="icon-files"></span>
 				</div>
 				<div class="banner-left-content banner-left-option">
-					<div class="margin-bottom blur" ng-show="director">
-						<span>Agregar nuevo director de proyecto</span>
-						<input type="text" class="w100">
-						<button type="submit" class="btn btn-blue" ng-click="director = !director">Agregar</button>
-					</div>
-					<div class="margin-bottom blur" ng-show="elaboro">
-						<span>Agregar nuevo encuestador</span>
-						<input type="text" class="w100">
-						<button type="submit" class="btn btn-blue" ng-click="elaboro = !elaboro">Agregar</button>
-					</div>
+					<a href="../updateregistro/@{{list_records[0]}}" ng-if="index != 0"> <span class="icon icon-big icon-first"></span> </a>
+					<a href="../updateregistro/@{{list_records[index - 1]}}" ng-if="index != 0"> <span class="icon icon-big icon-prev"></span> </a>
+					<a href="../updateregistro/@{{list_records[index + 1]}}" ng-if="index != list_records.length-1"> <span class="icon icon-big icon-next"></span> </a>
+					<a href="../updateregistro/@{{list_records[list_records.length - 1]}}" ng-if="index != list_records.length-1"> <span class="icon icon-big icon-last"></span> </a>					
 				</div>
 		</article>
 
@@ -58,7 +52,6 @@
 							</td>
 							<td>
 								Director de proyecto
-								<span class="icon icon-popout pointer" ng-click="director = !director"></span>
 							</td>
 							<td>
 								 {{Form::select('director_id',$directores,null,['class'=>'w100', 'ng.model'=>'record.director_id', 'required'])}}
@@ -71,7 +64,6 @@
 							</td>
 							<td>
 								Elaboro
-								<span class="icon icon-popout pointer" ng-click="elaboro = !elaboro"></span>
 							</td>
 							<td>							
 								<span>
@@ -153,7 +145,7 @@
 							</td>
 							<td>
 								Datos G.P.S.
-								<span class="icon icon-home pointer" ng-click="map = !map"></span>
+								<span class="icon icon-map pointer" ng-click="map = !map"></span>
 							</td>
 							<td>
 								{{Form::text('datos_gps',null,['class'=>'w100','ng-model'=>'record.datos_gps'])}}
@@ -297,7 +289,8 @@
 						</tr>
 						<tr>
 							<td>Fotografía de la construcción
-								<span class="icon icon-home pointer" ng-click="picture = !picture"></span>
+								<span class="icon icon-popout pointer" ng-click="picture = !picture" ng-show="picture"></span>
+								<span class="icon icon-popin pointer" ng-click="picture = !picture" ng-show="!picture"></span>
 							</td>
 							<td colspan="3">
 								{{Form::file('image')}}
