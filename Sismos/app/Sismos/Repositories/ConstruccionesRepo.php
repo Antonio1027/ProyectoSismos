@@ -3,6 +3,7 @@
 namespace Sismos\Repositories;
 
 use Sismos\Entities\Construccion;
+use Sismos\Entities\Vulnerabilidad;
 
 class ConstruccionesRepo extends \Eloquent{
 
@@ -23,6 +24,12 @@ class ConstruccionesRepo extends \Eloquent{
 
 	public function findConstruccion($id){
 		return Construccion::find($id);
+	}
+
+	public function getTechosList($muro){
+		return Vulnerabilidad::where('muro','=',$muro)
+							 ->orderBy('techo','Asc')
+							 ->get();
 	}
 
 }

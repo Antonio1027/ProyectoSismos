@@ -42,5 +42,11 @@ class UtilsController extends BaseController {
 
 		return Response::json($record);
 	}
+
+	public function getTecho(){
+		$muro = Input::get('muro');
+		$techos = $this->construccionesRepo->getTechosList($muro);
+		return Response::json($techos);		
+	}
 	
 }
