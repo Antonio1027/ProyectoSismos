@@ -25,20 +25,40 @@
 			<div>
 				<h3>Fuentes de peligro</h3>
 				<input type="radio" id="first-source">
-				<label for="first-source">Primera fuente de sismogénica subducción 23/Sep/1902 M=7.7 Acel=0.7g Grado de daño=X Tuxtla y Tapachula</label>
-				<br>
+				<label for="first-source">No es sentido, excepto por algunas personas bajo circunstancias especialmente favorables.</label>
+				<hr>
 				<input type="radio" id="second-source">
-				<label for="second-source">Segunda fuente de sismos profundos 21/Oct/1995 M=7.2 Acel=0.6g Grado de daño=IX Tuxtla y Tapachula</label>
-				<br>
+				<label for="second-source">Sentido sólo por muy pocas gente en posición de descanso, especialmente en los pisos altos de los edificios. Objetos delicadamente suspendidos pueden oscilar. </label>
+				<hr>
 				<input type="radio" id="third-source">
-				<label for="third-source">Tercera fuente sismos corticales Jul-Oct/1975 M=5.5 Acel=0.2g Grado de daño=VII Tuxtla </label>
-				<br>
+				<label for="third-source">Sentido muy claramente en interiores, especialmente en pisos altos de edificios, aunque mucha gente no lo reconoce como un terremoto. Automóviles parados pueden balancearse ligeramente. Vibraciones como el paso de un camión. Duración apreciable. </label>
+				<hr>
 				<input type="radio" id="fourth-source">
-				<label for="fourth-source">Cuarta fuente volcán M=5.5 Acel=0.2g Grado de daño=VII Tapachula </label>
-				<br>
+				<label for="fourth-source">Durante el día sentido en interiores por muchos, al aire libre por algunos. Por las noches algunas despiertan, platos, ventanas y puertas agitados, las paredes crujen. Sensación como si un camión pesado chocara contra un edificio. Automóvil parados se balancean apreciablemente.</label>
+				<hr>
 				<input type="radio" id="fifth-source">
-				<label for="fifth-source">Quinta fuente falla lateral 18/Abr/1902 M=7.0 Acel=9.4g Grado de daño=VIII Tapachula </label>
-				<br>
+				<label for="fifth-source">Sentido por casi todos, muchos se despiertan. Algunos platos, ventanas y similares rotos; grietas en el revestimiento en algunos sitios. Objetos inestables volcados. Algunas veces se aprecian balanceo de árboles, postes y otros objetos altos. Los péndulos de los relojes pueden pararse.</label>
+				<hr>
+				<input type="radio" id="sixth-source">
+				<label for="sixth-source">Sentido por todos, muchos se asistan y salen al exterior. Algunos muebles pesados se mueven; algunos casos de caída de revestimiento  chimeneas dañadas. Daño leve.</label>
+				<hr>
+				<input type="radio" id="seventh-source">
+				<label for="seventh-source">Todo el mundo sale al exterior. Daño insignificante e edificios de buen diseño y construcción; leve a modelado en estructuras comunes bien construidas; Considerable en estructuras pobremente construidas o mal diseñadas; se rompe algunas chimeneas. Notado por algunas personas que conducen automóviles.</label>
+				<hr>
+				<input type="radio" id="eighth-source">
+				<label for="eighth-source">Daño leve en estructuras diseñadas especialmente para resistir sismos; considerable, en edificios comunes bien construidos, llegando hasta colapso parcial o grande en estructuras de construcción pobre. Los muros de relleno se separan de la estructura. Caída de chimeneas, objetos apilados, postes, monumentos y paredes. Muebles pesados volcados. Expulsión de arena y barro en pequeñas cantidades. Cambios en pozos de agua. Ciertas dificultad para conducir automóviles.</label>
+				<hr>
+				<input type="radio" id="ninth-source">
+				<label for="ninth-source">Daño considerable en estructuras de diseño especial; estructuras bien diseñadas pierden la vertical; daño mayor en edificios sólidos, colapso parcial. Edificios desplazados de los cimientos. Grietas visibles en el suelo. Tuberías subterráneas rotas.</label>
+				<hr>
+				<input type="radio" id="tenth-source">
+				<label for="tenth-source">Algunas estructuras bien construidas en madera, destruidas; la mayoría de estructuras mampostería y marcos destruidas incluyendo sus cimientos; suelo muy agrietado. Rieles torcidos. Corrimiento de tierra considerable en las orillas de los ríos y en laderas escarpadas. Movimientos de arena y barro. Agua salpicada y derramada sobre las orillas.</label>
+				<hr>
+				<input type="radio" id="eleventh-source">
+				<label for="eleventh-source">Pocas o ninguna obra de albañilería quedan en pie. Puentes destruidos. Grietas anchas en el suelo. Tuberías subterráneas completamente fuera de servicio. La tierra se hunde y el suelo se desliza en terreno blandos. Rieles muy torcidos.</label>
+				<hr>
+				<input type="radio" id="twelfth-source">
+				<label for="twelfth-source">Destrucción total. Se ven ondas sobre la superficie del suelo. Líneas de mira (visuales) y de nivel deformadas. Objetos lanzados al aire.</label>
 			</div>			
 		</div>
 

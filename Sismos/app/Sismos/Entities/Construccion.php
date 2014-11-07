@@ -29,12 +29,10 @@ class Construccion extends \Eloquent {
 							'espesor_muros',
 							'repello',
 							'columnas',
-							'material_muro',
 							'densidad_muro',
 							'tipo_suelo',
 							'tipo_cimentacion',
 							'espesor_techo',
-							'tipo_techo',
 							'tipo_piso',
 							'pendiente',
 							'largo',
@@ -50,7 +48,10 @@ class Construccion extends \Eloquent {
 							'mantenimiento',
 							'fenomeno',
 							'reparaciones',
-							'remodelaciones'
+							'remodelaciones',
+							'material_muro',
+							'tipo_techo',
+							'vulnerabilidad_id'
 						  ];
 	protected $table = 'construcciones';
 

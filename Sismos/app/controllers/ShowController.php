@@ -45,9 +45,10 @@ class ShowController extends BaseController {
 		Session::put('idregistro',$id);
 		$registro = $this->construccionesRepo->findConstruccion($id);		
 		$directores = $this->directoresRepo->listDirectores();
+		$vulnerabilidad = $this->construccionesRepo->getTechosIdList($registro->vulnerabilidad_id);
 		unset($directores[3]);					
 
-		return View::make('updateregistro',compact('registro','directores'));
+		return View::make('updateregistro',compact('registro','directores','vulnerabilidad'));
 	}
 	public function showRegister(){
 		$directores = [''=>'Seleccione opción'] + $this->directoresRepo->listDirectores();

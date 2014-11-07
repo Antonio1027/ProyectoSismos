@@ -54,6 +54,7 @@ Route::group(['before'=>'auth'], function(){
 	Route::get('searchregistros',['as'=>'searchregistros','uses'=>'UtilsController@searchRegistros']);
 	Route::get('searchregistro',['as'=>'searchregistro','uses'=>'UtilsController@searchRegistro']);
 	Route::get('gettechos',['as'=>'gettechos','uses'=>'UtilsController@getTecho']);
+	Route::get('gettechosid',['as'=>'gettechosid','uses'=>'UtilsController@getTechoid']);
 
 });
 

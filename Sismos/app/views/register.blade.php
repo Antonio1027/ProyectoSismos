@@ -18,12 +18,10 @@
 						<li class="list-item"><a href="{{route('register')}}"><span class="icon icon-add"></span> Nuevo</a></li>
 						{{--<li class="list-item"><span class="icon icon-minus"></span> Borrar</li>--}}
 						{{--<li class="list-item"><span class="icon icon-pen"></span> Modificar</li>--}}
-						<li class="list-item"><a href="{{route('consultrecords')}}"><span class="icon icon-magnifier"></span> Buscar</a></li>
+						<li class="list-item"><a href="{{route('managerusers')}}"><span class="icon icon-magnifier"></span> Buscar</a></li>
 					</ul>
 				</div>
 			</div>
-
-				
 		</article>
 
 		<article class="banner-right">
@@ -32,6 +30,7 @@
 			<div class="category" ng-init="tab1 = true" ng-class="{invalid: 
 								!formRegister.formato.$valid || 
 								!formRegister.director_id.$valid || 
+								!formRegister.ciudad.$valid || 
 								!formRegister.fecha_elaboracion.$valid}">								
 				<h3 class="category-title" ng-click="tab1 = !tab1">Datos del registro</h3>
 				<div class="category-content blur" ng-show="tab1">
@@ -340,7 +339,7 @@
 						                        'Panel de yeso'=>'Panel de yeso',
 						                        'Piedra'=>'Piedra'],						                        
 						                        null,
-						                        ['class'=>'w50','ng-model'=>'material_muro'])}}
+						                        ['class'=>'w50','ng-model'=>'material_muro','ng-change'=>'searchtechos()', 'required'])}}
 							</td>
 						</tr>
 						<tr>
@@ -411,28 +410,6 @@
 							<td width="25%">
 								{{Form::text('espesor_techo',null,['class'=>'w100','ng-model'=>'espesor_techo'])}}
 							</td>
-							<td width="25%">Tipo de techo</td>
-							<td width="25%">
-								{{Form::select('tipo_techo',
-						                        [''=>'Seleccione opción',
-						                        'Lamina de asbesto'=>'Lamina de asbesto',
-						                        'Lamina de cartón'=>'Lamina de cartón',
-						                        'Lamina metalica'=>'Lamina metalica',
-						                        'Losa aligerada'=>'Losa aligerada',
-						                        'Losa maciza'=>'Losa maciza',
-						                        'Losa maciza y teja'=>'Losa maciza y teja',
-						                        'Madera'=>'Madera',
-						                        'Madera y teja'=>'Madera y teja',
-						                        'No tiene'=>'No tiene',
-						                        'Paja'=>'Paja',
-						                        'Panel de poliestireno'=>'Panel de poliestireno',
-						                        'Teja'=>'Teja',
-						                        'Teja de barro'=>'Teja de barro'],      
-						                        null,
-						                        ['class'=>'w100','ng-model'=>'tipo_techo'])}}                
-							</td>
-						</tr>
-						<tr>
 							<td>Tipo de piso</td>
 							<td>
 								 {{Form::select('tipo_piso',
@@ -446,6 +423,13 @@
 						                        'Tierra'=>'Tierra'],
 						                        null,
 						                        ['class'=>'w100','ng-model'=>'tipo_piso'])}}
+							</td>
+						</tr>
+						<tr>
+							<td width="25%">Tipo de techo</td>
+							<td width="25%">
+								{{Form::select('tipo_techo',[''=>'Seleccione opción'],null,['class'=>'w100','ng-model'=>'tipo_techo', 'ng-options'=>'techo.techo for techo in techos track by techo.techo','required'])}}								
+								<input type="hidden" name="vulnerabilidad_id" value="@{{tipo_techo.id}}" ng-if="tipo_techo">
 							</td>
 							<td>Pendiente (inclinacion)</td>
 							<td>

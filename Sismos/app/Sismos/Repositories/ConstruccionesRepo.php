@@ -31,7 +31,9 @@ class ConstruccionesRepo extends \Eloquent{
 							 ->orderBy('techo','Asc')
 							 ->get();
 	}
+	public function getTechosIdList($id){
+		return Vulnerabilidad::where('id','=',$id)
+							 ->get();
+	}
 
 }
-
- ?>

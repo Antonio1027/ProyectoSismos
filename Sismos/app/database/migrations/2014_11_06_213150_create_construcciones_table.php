@@ -42,15 +42,13 @@ class CreateConstruccionesTable extends Migration {
 	      $table->float('alt_entrepisos');
 	      $table->string('uso');
 	      $table->string('tipo_construccion');
-
-	      $table->string('image');
+	      $table->string('image')->nullable();
 	      // -------------------------
 	      // caracteristicas estructurales de los muros
-
+	      $table->string('material_muro');
 	      $table->float('espesor_muros');
 	      $table->enum('repello',['Si','No','No se sabe']);
 	      $table->enum('columnas',['Si','No','No se sabe']);
-	      $table->string('material_muro');
 	      $table->string('densidad_muro');
 
 	      // ---------------- cimentacion   

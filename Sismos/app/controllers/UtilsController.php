@@ -48,5 +48,10 @@ class UtilsController extends BaseController {
 		$techos = $this->construccionesRepo->getTechosList($muro);
 		return Response::json($techos);		
 	}
+	public function getTechoid(){
+		$id = Input::get('id');
+		$techos = $this->construccionesRepo->getTechosIdList($id);
+		return Response::json($techos);		
+	}
 	
 }

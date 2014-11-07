@@ -54,6 +54,26 @@ App.controller('RegisterController',function ($scope, $http) {
 			setMarker($scope.record.datos_gps);
 		})
 	};
+	$scope.searchtechos = function(){
+		$http.get('gettechos',{
+		  params:{
+		  	muro: $scope.material_muro,
+		  }	
+		}).success(function($data){
+			$scope.techos = $data;
+			console.log($data);
+		})
+	};	
+	$scope.searchtechosupdate = function(){
+		$http.get('../gettechos',{
+		  params:{
+		  	muro: $scope.record.material_muro,
+		  }	
+		}).success(function($data){
+			$scope.techos = $data;
+			console.log($data);
+		})
+	};	
 	$scope.searchrecords = function(){
 		$http.get('../searchregistros',{
 		  params:{

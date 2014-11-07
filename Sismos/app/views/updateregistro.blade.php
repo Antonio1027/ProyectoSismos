@@ -350,22 +350,19 @@
 							<td>
 								{{Form::select('material_muro',
 						                        [''=>'Seleccione opción',
+						                        'Acero'=>'Acero',
 						                        'Adobe'=>'Adobe',
-						                        'Bajareque'=>'Bajareque',
-						                        'Bambu'=>'Bambu',
+						                        'Bajareque'=>'Bajareque',						                        
 						                        'Block'=>'Block',
 						                        'Concreto'=>'Concreto',
-						                        'Ladrillo'=>'Ladrillo',
-						                        'Lamina'=>'Lamina',
-						                        'Lamina de cartón'=>'Lamina de cartón',
-						                        'Lamina de zinc'=>'Lamina de zinc',
+						                        'Ladrillo'=>'Ladrillo',						                        						                        						                        
+						                        'Diversas'=>'Diversas',
 						                        'Madera'=>'Madera',
 						                        'Panel de poliestireno'=>'Panel de poliestireno',
 						                        'Panel de yeso'=>'Panel de yeso',
-						                        'Piedra'=>'Piedra',
-						                        'Teja de cartón'=>'Teja de cartón'],
+						                        'Piedra'=>'Piedra'],						                        
 						                        null,
-						                        ['class'=>'w50','ng-model'=>'record.material_muro'])}}
+						                        ['class'=>'w50','ng-model'=>'record.material_muro','ng-change'=>'searchtechosupdate()', 'required'])}}
 							</td>
 						</tr>
 						<tr>
@@ -436,31 +433,9 @@
 							<td width="25%">
 								{{Form::text('espesor_techo',null,['class'=>'w100','ng-model'=>'record.espesor_techo'])}}
 							</td>
-							<td width="25%">Tipo de techo</td>
-							<td width="25%">
-								{{Form::select('tipo_techo',
-						                        [''=>'Seleccione opción',
-						                        'Lamina de asbesto'=>'Lamina de asbesto',
-						                        'Lamina de cartón'=>'Lamina de cartón',
-						                        'Lamina metalica'=>'Lamina metalica',
-						                        'Losa aligerada'=>'Losa aligerada',
-						                        'Losa maciza'=>'Losa maciza',
-						                        'Losa maciza y teja'=>'Losa maciza y teja',
-						                        'Madera'=>'Madera',
-						                        'Madera y teja'=>'Madera y teja',
-						                        'No tiene'=>'No tiene',
-						                        'Paja'=>'Paja',
-						                        'Panel de poliestireno'=>'Panel de poliestireno',
-						                        'Teja'=>'Teja',
-						                        'Teja de barro'=>'Teja de barro'],      
-						                        null,
-						                        ['class'=>'w100','ng-model'=>'record.tipo_techo'])}}                
-							</td>
-						</tr>
-						<tr>
 							<td>Tipo de piso</td>
 							<td>
-								 {{Form::select('tipo_piso',
+								{{Form::select('tipo_piso',
 						                        [''=>'Seleccione opción',
 						                        'Cemento'=>'Cemento',
 						                        'Concreto'=>'Concreto',
@@ -471,6 +446,14 @@
 						                        'Tierra'=>'Tierra'],
 						                        null,
 						                        ['class'=>'w100','ng-model'=>'record.tipo_piso'])}}
+							</td>
+						</tr>
+						<tr>
+							<td width="25%">Tipo de techo</td>
+							<td width="25%">
+								{{Form::select('tipo_techo',[''=>$vulnerabilidad[0]->techo],null,['class'=>'w100','ng-model'=>'record.tipo_techo', 'ng-options'=>'techo.techo for techo in techos track by techo.techo'])}}
+
+								<input type="text" name="vulnerabilidad_id" ng-model="record.tipo_techo.id" ng-hide="true">
 							</td>
 							<td>Pendiente (inclinacion)</td>
 							<td>

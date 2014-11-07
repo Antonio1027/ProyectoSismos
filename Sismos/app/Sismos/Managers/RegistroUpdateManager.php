@@ -22,6 +22,11 @@ class RegistroUpdateManager extends BaseManager{
 
 
 	public function prepareData($data){
+		if($data['vulnerabilidad_id'] == ''){
+			unset($data['vulnerabilidad_id']);
+			unset($data['tipo_techo']);
+			unset($data['material_muro']);
+		}
 		if(isset($data['image'])){						
 			$data = $this->moveImage($data);
 		}
