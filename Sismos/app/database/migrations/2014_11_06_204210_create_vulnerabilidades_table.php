@@ -17,7 +17,9 @@ class CreateVulnerabilidadesTable extends Migration {
 			$table->increments('id');
 			$table->string('muro');
 			$table->string('techo');
+			$table->enum('tipodanos',['A','B','C','D','E','F']);
 			$table->enum('tipo',['A','B','C','D','E','F']);
+			$table->enum('tipomejorado',['A','B','C','D','E','F']);
 			$table->timestamps();
 		});
 	}

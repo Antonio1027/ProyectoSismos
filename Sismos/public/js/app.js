@@ -27,6 +27,20 @@ function setMarker(data){
 	data = data.split(',');
 	marker.position = new google.maps.LatLng(data[0], data[1]);
 };
+function setMarkerAnalitycs(data){
+	data = data.datos_gps.split(',');
+	console.log(data);
+
+	var iconmarker = 'iconmaps/markerblue.png';
+
+	marker = new google.maps.Marker({
+        position: new google.maps.LatLng(data[0], data[1]),
+        animation: google.maps.Animation.DROP,
+        map: map,
+        icon: iconmarker
+    });
+	// marker.position = ;
+};
 
 var App = angular.module('Sismos', ['ngAnimate']);
 
@@ -121,9 +135,25 @@ App.controller('ManagerCtrl', function ($scope, $http) {
 	};
 });
 
+App.controller('AnalitycsCtrl', function ($scope, $http) {
+	$scope.initmaps = function(){
+		initmaps();
+	};
+	$scope.searchrecords = function(){
+		$http.get('searchregistros',{
+		  params:{
+		  	director: $scope.director,
+		  	formato: $scope.formato
+		  }	
+		}).success(function($data){
+			angular.forEach($data, function(value, key){
+				setMarkerAnalitycs(value);
+			})
+		})
+	};
+});
+
 App.controller('UpdateCtrl', function ($scope, $http) {
-
-
 });
 
 //JavaScript

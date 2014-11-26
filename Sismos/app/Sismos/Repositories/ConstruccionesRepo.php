@@ -11,6 +11,9 @@ class ConstruccionesRepo extends \Eloquent{
 		$construccion = new Construccion();		
 		return $construccion;
 	}
+	public function allConstruccion(){
+		return Construccion::all();
+	}
 
 	public function deleteConstruccion($id){
 		return Construccion::where('id', '=', $id)->delete();
@@ -35,5 +38,4 @@ class ConstruccionesRepo extends \Eloquent{
 		return Vulnerabilidad::where('id','=',$id)
 							 ->get();
 	}
-
 }

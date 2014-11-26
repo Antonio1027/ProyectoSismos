@@ -60,5 +60,8 @@ class Construccion extends \Eloquent {
 	}		  
 	public function user(){
 		return $this->belongsTo('Sismos\Entities\User');
+	}
+	public function vulnerabilidad(){
+		return $this->belongsTo('Sismos\Entities\Vulnerabilidad');
 	}	
 }

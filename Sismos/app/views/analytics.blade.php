@@ -4,8 +4,12 @@
 	Registro
 @stop
 
+@section('script')
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBpCHGsuh7cVRGRyn-ECXWybh7hq2lP_hc&sensor=true"></script>
+@stop
+
 @section('content')
-	<section>
+	<section ng-controller="AnalitycsCtrl" ng-init="searchrecords()">
 		<div class="box">
 			<h1>Analisis de vulnerabilidad por el método de la UAM</h1>
 		</div>
@@ -68,171 +72,26 @@
 				<table class="table table-cell">
 					<tr>
 						<td>Tipo de estructura</td>
-						<td>Con daños</td>
-						<td>Sin daños</td>
-						<td>Totales</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Acero</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Adobe - Lámina de acero</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Adobe - Lámina de asbesto</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Adobe - Teja</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Bajareque - Losa maciza</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Bajareque - Lámina de acero</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Bajareque - Lámina de asbesto</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Bajareque - Teja</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Block - Losa maciza</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Block - lámina de acero</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Block - lámina de asbesto</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Block - teja</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Concreto - losa maciza</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Diversas</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Ladrillo - losa maciza</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Ladrillo - lámina de acero</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Ladrillo - lámina de asbesto</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Ladrillo - madera</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Ladrillo - teja</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Madera - losa maciza</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Madera - lámina de acero</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Madera - madera</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Madera - teja</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Panel de yeso - losa maciza</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Piedra - lámina de acero</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
+						<td align="center">Con daños</td>
+						<td align="center">Sin daños</td>
+						<td align="center">Mejorado</td>
+						<td align="center">Totales</td>
+					</tr>					
+					@foreach ($table1 as $element)
+						<tr>
+							<td>{{$element['id']}}</td>
+							<td align="center">{{$element['condaños']}}</td>
+							<td align="center">{{$element['sindaños']}}</td>
+							<td align="center">{{$element['mejorado']}}</td>
+							<td align="center">{{$element['total']}}</td>
+						</tr>
+					@endforeach
 					<tr>
 						<td><strong>Totales</strong></td>
-						<td><strong>904</strong></td>
-						<td><strong>1196</strong></td>
-						<td><strong>2100</strong></td>
+						<td align="center"><strong>{{$table1totales['totalcondaños']}}</strong></td>
+						<td align="center"><strong>{{$table1totales['totalsindaños']}}</strong></td>
+						<td align="center"><strong>{{$table1totales['totalmejorados']}}</strong></td>
+						<td align="center"><strong>{{$table1totales['totales']}}</strong></td>
 					</tr>
 				</table>
 			</div>
@@ -244,192 +103,19 @@
 				<table class="table table-cell">
 					<tr>
 						<td>Tipo de estructura</td>
-						<td>Cantidad</td>
-						<td>Clase asignada</td>
+						<td align="center">Cantidad</td>
+						<td align="center">Clase asignada</td>
 					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Adobe - lámina de acero</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Adobe - lámina de asbesto</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Adobe - teja</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Bajareque - losa maciza</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Bajareque - lámina de acero</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Bajareque - lámina de asbesto</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Bajareque - teja</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Block - teja</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Diversas</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Ladrillo - teja</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Madera - losa maciza</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Madera - lámina de acero</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Madera - teja</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Panel de yeso - losa maciza</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Piedra - lámina de acero</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Adobe - lámina de asbesto</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Block - lámina de acero</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Block - lámina de asbesto</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Ladrillo - lámina de acero</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Ladrillo - lámina de asbesto</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Ladrillo - madera</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Madera - lámina de acero</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Madera - madera</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Block - losa maciza</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Block - teja</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Ladrillo - losa maciza</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Ladrillo - teja</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Block - losa maciza</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Block - lámina de acero</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Block - lámina de asbesto</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Concreto - losa maciza</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Ladrillo - losa maciza</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Ladrillo - lámina de acero</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Ladrillo - lámina de asbesto</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Acero</td>
-						<td></td>
-						<td></td>
-					</tr>
+					@foreach ($table2 as $element)
+						<tr>
+							<td>{{$element['estructura']}}</td>
+							<td align="center">{{$element['total']}}</td>
+							<td align="center">{{$element['tipo']}}</td>
+						</tr>
+					@endforeach
 					<tr>
 						<td><strong>Estructuras analizadas</strong></td>
-						<td><strong>2100</strong></td>
+						<td align="center"><strong>{{$table2totales['total']}}</strong></td>
 					</tr>
 
 				</table>
@@ -814,8 +500,10 @@
 				</table>
 			</div>
 		</div>
+			
+		<div class="map blur block-center" id="map" ng-init="initmaps()" >
 
-		<div class="category">
+		<!-- <div class="category">
 			<h3 class="category-title">Conteo de vulnerabilidades </h3>
 			<div class="category-content">
 				<table class="table table-cell w25">
@@ -846,6 +534,6 @@
 
 				</table>
 			</div>
-		</div>
+		</div> -->
 	</section>
 @stop
