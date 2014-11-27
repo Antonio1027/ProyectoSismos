@@ -27,6 +27,7 @@ Route::group(['before'=>'auth'], function(){
 	Route::group(['before'=>'is_experto'], function(){
 		Route::get('consultrecords',['as'=>'consultrecords','uses'=>'ShowController@showConsultRecords']);
 		Route::get('analytics',['as'=>'analytics','uses'=>'ShowController@showAnalytics']);
+		Route::post('analytics',['as'=>'analytics','uses'=>'ShowController@showAnalytics']);
 	});
 	
 	Route::group(['before'=>'is_admin'], function(){
@@ -55,6 +56,8 @@ Route::group(['before'=>'auth'], function(){
 	Route::get('searchregistro',['as'=>'searchregistro','uses'=>'UtilsController@searchRegistro']);
 	Route::get('gettechos',['as'=>'gettechos','uses'=>'UtilsController@getTecho']);
 	Route::get('gettechosid',['as'=>'gettechosid','uses'=>'UtilsController@getTechoid']);
+	Route::get('getAnalytics',['as'=>'getAnalytics','uses'=>'UtilsController@getAnalytics']);
+	Route::get('getAnalyticsTable',['as'=>'getAnalyticsTable','uses'=>'UtilsController@getAnalyticsTable']);
 
 });
 

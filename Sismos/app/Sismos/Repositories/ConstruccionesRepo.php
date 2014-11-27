@@ -28,6 +28,10 @@ class ConstruccionesRepo extends \Eloquent{
 	public function findConstruccion($id){
 		return Construccion::find($id);
 	}
+	public function findzonas($zona){
+		return Construccion::where('zona','LIKE','%' . $zona . '%')
+							->get();
+	}
 
 	public function getTechosList($muro){
 		return Vulnerabilidad::where('muro','=',$muro)

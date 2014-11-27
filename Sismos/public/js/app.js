@@ -1,5 +1,5 @@
 var map;
-var marker;
+var markers = [];
 var coordinates;
 
 function initmaps(){
@@ -22,19 +22,50 @@ function initmaps(){
     	marker.setMap(map);
 	});
 };
+function initmaps2(){
+	var mapOptions = {
+		center: new google.maps.LatLng(16.256874, -92.3009364),
+		zoom: 8,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	map = new google.maps.Map(document.getElementById("map"),mapOptions);
+	marker = new google.maps.Marker({
+        position: null,
+        animation: google.maps.Animation.DROP,
+        map: map
+    });
+    
+};
 
 function setMarker(data){
 	data = data.split(',');
 	marker.position = new google.maps.LatLng(data[0], data[1]);
+	markers.push(markers);
 };
 function setMarkerAnalitycs(data){
-	data = data.datos_gps.split(',');
-	console.log(data);
-
-	var iconmarker = 'iconmaps/markerblue.png';
-
+	data_gps = data.datos_gps.split(',');
+	switch(data.tipo){
+		case 'A':
+			var iconmarker = 'iconmaps/markeryellow.png';
+		break;
+		case 'B':
+			var iconmarker = 'iconmaps/markerblue.png';
+		break;
+		case 'C':
+			var iconmarker = 'iconmaps/markergreen.png';
+		break;
+		case 'D':
+			var iconmarker = 'iconmaps/markergrey.png';
+		break;
+		case 'E':
+			var iconmarker = 'iconmaps/markerorange.png';
+		break;
+		case 'F':
+			var iconmarker = 'iconmaps/markerred.png';
+		break;
+	}
 	marker = new google.maps.Marker({
-        position: new google.maps.LatLng(data[0], data[1]),
+        position: new google.maps.LatLng(data_gps[0], data_gps[1]),
         animation: google.maps.Animation.DROP,
         map: map,
         icon: iconmarker
@@ -137,18 +168,34 @@ App.controller('ManagerCtrl', function ($scope, $http) {
 
 App.controller('AnalitycsCtrl', function ($scope, $http) {
 	$scope.initmaps = function(){
-		initmaps();
+		initmaps2();
 	};
 	$scope.searchrecords = function(){
-		$http.get('searchregistros',{
+		$http.get('getAnalytics',{
 		  params:{
-		  	director: $scope.director,
-		  	formato: $scope.formato
+		  	zona: $scope.zona
 		  }	
 		}).success(function($data){
-			angular.forEach($data, function(value, key){
+			$scope.data = $data;
+			console.log($scope.data);
+
+
+
+			initmaps2();
+			angular.forEach($data.table2, function(value, key){
 				setMarkerAnalitycs(value);
 			})
+		})
+	};
+	$scope.getAnalyticsTable = function(){
+		$http.get('getAnalyticsTable',{
+		  params:{
+		  	zona: $scope.zona,
+		  	fuentes: $scope.fuente
+		  }	
+		}).success(function($data){
+			$scope.data = $data;
+			console.log($data);
 		})
 	};
 });
