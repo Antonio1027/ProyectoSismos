@@ -16,7 +16,7 @@
 		</div>
 		<!-- Form -->
 		<div class="content margin-bottom">
-			{{ Form::open(['route' => 'analytics', 'method' => 'post']) }}
+			
 				<div>
 					<h3>Zona de estudio</h3>				
 					<select name="zonas" id="" ng-model="zona" ng-init="searchrecords()" ng-change="searchrecords()" required>
@@ -67,8 +67,6 @@
 					<label for="twelfth-source">Destrucción total. Se ven ondas sobre la superficie del suelo. Líneas de mira (visuales) y de nivel deformadas. Objetos lanzados al aire.</label>
 				</div>
 				<br>
-				<button type="submit" class="btn btn-blue"> Realizar análisis</button>
-			{{Form::close()}}
 		</div>
 
 		<!-- Mapa -->
